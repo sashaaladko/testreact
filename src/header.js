@@ -1,6 +1,7 @@
 import React from "react";
+import "./styles/header.css"
 
-function Header({JsonData, Sort, swapData}) {
+function Header({JsonData, Sort, swapData, isShuffled}) {
     return (
         <>
          <header>
@@ -20,6 +21,7 @@ function Header({JsonData, Sort, swapData}) {
         Sort
       </button>
       <button className="btn" id='btn' onClick={swapData}>Swap</button>
+      <button className="btn" id ='btn' onClick={isShuffled}>Shuffle</button>
      </>
     )
 }

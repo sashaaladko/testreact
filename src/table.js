@@ -1,7 +1,10 @@
 import React from "react";
+import "./styles/table.css"
 
-function Table({showBlocks, filterState, stateSwap}) {
-    const swap = !stateSwap?showBlocks:filterState;
+function Table({showBlocks, filterState, stateSwap, shuffle, shuffleData}) {
+    const swap =shuffle? shuffleData: !stateSwap?showBlocks:filterState;
+ 
+    console.log(swap);
     
     return (
       <main>
@@ -40,4 +43,4 @@ function Table({showBlocks, filterState, stateSwap}) {
     )
 }
 
-export default Table
+export default Table;

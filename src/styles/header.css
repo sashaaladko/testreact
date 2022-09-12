@@ -1,0 +1,77 @@
+header {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 14px 24px;
+    gap: 12px;
+    height: 64px;
+    background: #1C1C1E;
+    border-bottom: 1px solid #38383A;
+  }
+  
+  h1{
+    height: 28px;
+    flex: 2;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    color: #FFFFFF;
+  
+    margin-top:18px ;
+    margin-left: 24px;
+    margin-bottom: 18px;
+  }
+
+  .address{
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    height: 36px;
+    margin-top: 14px;
+    margin-right: 50px;
+    margin-bottom: 14px;
+  }
+
+  .address address {
+    height: 20px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: right;
+    color: #FFFFFF;
+  }
+  
+  .address label {
+    height: 16px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: right;
+    color: rgba(235, 235, 245, 0.6);
+  }
+
+  .prod{
+    height: 28px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    color: #FFFFFF;
+    margin-left: 40px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+
+  .btn {
+    margin-left: 34px;
+    width: 70px;
+    height: 30px;
+    background-color: #2C2C2E;
+    color: #FFFFFF;
+    border-radius: 15%;
+    border:#2C2C2E;
+  }
+  .btn:hover {
+    background-color: #FFFFFF;
+    color: #2C2C2E;
+  }

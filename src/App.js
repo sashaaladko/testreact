@@ -6,6 +6,8 @@ function App() {
   const [showBlocks, setshowBlocks] = useState();
   const [filterState, setfilterState] = useState();
   const [stateSwap, setstateSwap] = useState(false);
+  const [shuffle, setshuffle] = useState(false);
+  const [shuffleData, setshuffleData] = useState();
   const url = "https://marketing.ikassa.by/products/solutions";
   const url2 = "https://marketing.ikassa.by/products";
   const response = fetch(url).then((r) => r.json());
@@ -58,12 +60,21 @@ function App() {
     setstateSwap(!stateSwap)
   }
 
+  function isShuffled() {
+    setshuffle(true)
+    const shuffledData = showBlocks.map(i=>[Math.random(), i]).sort().map(i=>i[1])
+    setshuffleData(shuffledData);
+    //console.log(shuffledData);
+  }
+  function f(){
+     const shuffledData = showBlocks.sort(()=>Math.random()-0.5);
+    setshuffleData(shuffledData);
+  }
 
   return (
     <div className="App">
-     <Header JsonData={JsonData} Sort={Sort} swapData={swapData}/>
-      <Table showBlocks={showBlocks} filterState={filterState} stateSwap={stateSwap}/>
-
+     <Header JsonData={JsonData} Sort={Sort} swapData={swapData} isShuffled={isShuffled}/>
+      <Table showBlocks={showBlocks} filterState={filterState} stateSwap={stateSwap} shuffleData={shuffleData} shuffle={shuffle}/>
     </div>
   );
 }
