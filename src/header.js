@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles/header.css"
+import { Link } from "react-router-dom";
 
 function Header({JsonData, Sort, swapData, isShuffled}) {
     return (
@@ -14,14 +15,17 @@ function Header({JsonData, Sort, swapData, isShuffled}) {
         </div>
       </header>
       <h1 className="prod">Товары</h1>
-      <button className="btn" id="btn" onClick={JsonData}>
+      <button className="btn" onClick={JsonData}>
         Refresh
       </button>
-      <button className="btn" id="btn" onClick={Sort}>
+      <button className="btn" onClick={Sort}>
         Sort
       </button>
-      <button className="btn" id='btn' onClick={swapData}>Swap</button>
-      <button className="btn" id ='btn' onClick={isShuffled}>Shuffle</button>
+      <button className="btn" onClick={swapData}>Swap</button>
+      <button className="btn" onClick={isShuffled}>Shuffle</button>
+      <Link path="/products">продукты</Link>
+      <Link path="/services"></Link>
+      <Link path="/prices"></Link>
      </>
     )
 }

@@ -2,6 +2,11 @@ import "./App.css";
 import React, { useEffect, useState } from "react";
 import Header from "./header";
 import Table from "./table";
+import Products from "./solutions/products";
+import Services from "./contents/services";
+import Prices from "./prices/prices";
+import { Router, Routes } from "react-router-dom";
+import { Route } from "react-router-dom";
 function App() {
   const [showBlocks, setshowBlocks] = useState();
   const [filterState, setfilterState] = useState();
@@ -51,6 +56,7 @@ function App() {
   }, []);
 
   function Sort() {
+    setshuffle(false);
     const sortData = showBlocks && showBlocks.filter(data => data.solName && (data.equipment && data.equipment.length > 0))
     setfilterState(sortData);
   }
@@ -66,16 +72,26 @@ function App() {
     setshuffleData(shuffledData);
     //console.log(shuffledData);
   }
-  function f(){
-     const shuffledData = showBlocks.sort(()=>Math.random()-0.5);
-    setshuffleData(shuffledData);
-  }
-
   return (
-    <div className="App">
-     <Header JsonData={JsonData} Sort={Sort} swapData={swapData} isShuffled={isShuffled}/>
-      <Table showBlocks={showBlocks} filterState={filterState} stateSwap={stateSwap} shuffleData={shuffleData} shuffle={shuffle}/>
-    </div>
+   
+    <Router>
+      <div>
+       <Header JsonData={JsonData} Sort={Sort} swapData={swapData} isShuffled={isShuffled}/>
+      
+      <Routes>
+        <Route path="/" element={<Header/>}/>
+        <Route path="/products" element={<Products showBlocks={showBlocks}/>}/>
+        <Route path="/services" element={<Services showBlocks={showBlocks}/>}/>
+        <Route path="/prices" element={<Prices showBlocks={showBlocks}/>}/>
+        <div className="App">
+        {/* <Table showBlocks={showBlocks} filterState={filterState} stateSwap={stateSwap} shuffleData={shuffleData} shuffle={shuffle}/> */}
+        </div>
+      </Routes>
+      </div>
+    </Router>
+   
+     
+    
   );
 }
 
