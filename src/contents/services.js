@@ -1,11 +1,14 @@
 import React from "react";
+import Header from "../header";
 
 function Services({showBlocks}) {
     const serv = showBlocks;
     return (
+
         <main>
-          {showBlocks &&
-            showBlocks.map(e =>
+                <Header/>
+          {serv &&
+            serv.map(e =>
               <>
               <div className="info">
                 <div className="name">

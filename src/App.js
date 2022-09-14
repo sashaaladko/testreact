@@ -7,6 +7,10 @@ import Services from "./contents/services";
 import Prices from "./prices/prices";
 import { Router, Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useRoutes } from "react-router-dom";
+import RouteHook from "./routeHook";
+
 function App() {
   const [showBlocks, setshowBlocks] = useState();
   const [filterState, setfilterState] = useState();
@@ -55,40 +59,63 @@ function App() {
     JsonData();
   }, []);
 
-  function Sort() {
-    setshuffle(false);
-    const sortData = showBlocks && showBlocks.filter(data => data.solName && (data.equipment && data.equipment.length > 0))
-    setfilterState(sortData);
-  }
+  // function Sort() {
+  //   setshuffle(false);
+  //   const sortData = showBlocks && showBlocks.filter(data => data.solName && (data.equipment && data.equipment.length > 0))
+  //   setfilterState(sortData);
+  // }
 
 
-  function swapData() {
-    setstateSwap(!stateSwap)
-  }
+  // function swapData() {
+  //   setstateSwap(!stateSwap)
+  // }
 
-  function isShuffled() {
-    setshuffle(true)
-    const shuffledData = showBlocks.map(i=>[Math.random(), i]).sort().map(i=>i[1])
-    setshuffleData(shuffledData);
-    //console.log(shuffledData);
-  }
+  // function isShuffled() {
+  //   setshuffle(true)
+  //   const shuffledData = showBlocks.map(i=>[Math.random(), i]).sort().map(i=>i[1])
+  //   setshuffleData(shuffledData);
+  //   //console.log(shuffledData);
+  // }
+  
+  // let routeResult = useRoutes([
+  //   {
+  //     path: "/", 
+  //     element: <Header/>,
+  //     children: [
+  //       {
+  //         path: "products",
+  //         element: <Products showBlocks={showBlocks}/>,
+  //       },
+  //       {
+  //         path: "services",
+  //         element: <Services showBlocks={showBlocks}/>,
+  //       },
+  //       {
+  //         path: "prices",
+  //         element: <Prices showBlocks={showBlocks}/>
+  //       }
+  //     ]
+  //   }
+  // ])
+
   return (
-   
-    <Router>
+
       <div>
-       <Header JsonData={JsonData} Sort={Sort} swapData={swapData} isShuffled={isShuffled}/>
-      
+        {/* <Header/> */}
+        {/* {routeResult} */}
+<RouteHook showBlocks={showBlocks}/>
+
+      {/* <Header/>
       <Routes>
-        <Route path="/" element={<Header/>}/>
-        <Route path="/products" element={<Products showBlocks={showBlocks}/>}/>
-        <Route path="/services" element={<Services showBlocks={showBlocks}/>}/>
-        <Route path="/prices" element={<Prices showBlocks={showBlocks}/>}/>
-        <div className="App">
-        {/* <Table showBlocks={showBlocks} filterState={filterState} stateSwap={stateSwap} shuffleData={shuffleData} shuffle={shuffle}/> */}
-        </div>
-      </Routes>
+        <Route exact path="/products" element={<Products showBlocks={showBlocks}/>}/>
+        <Route exact path="/services" element={<Services showBlocks={showBlocks}/>}/>
+        <Route exact path="/prices" element={<Prices showBlocks={showBlocks}/>}/>
+
+
+       
+      </Routes> */}
+
       </div>
-    </Router>
    
      
     

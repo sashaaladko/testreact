@@ -1,10 +1,11 @@
 import React from "react";
-
+import Header from "../header";
 
 function Products({showBlocks}) {
     const prod = showBlocks;
     return(
         <main>
+          <Header/>
         {prod &&
           prod.map(e =>
             <>
