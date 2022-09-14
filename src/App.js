@@ -44,7 +44,7 @@ function App() {
               return { name: eq.name, price:eq.price}
             })
 
-            return { solName: n.name, services: services, equipment: equipment };
+            return { solName: n.name, id: n.id, services: services, equipment: equipment };
 
           }
           return { solName: n.name};
@@ -103,7 +103,7 @@ function App() {
       <div>
         {/* <Header/> */}
         {/* {routeResult} */}
-<RouteHook showBlocks={showBlocks}/>
+      <RouteHook showBlocks={showBlocks}/>
 
       {/* <Header/>
       <Routes>

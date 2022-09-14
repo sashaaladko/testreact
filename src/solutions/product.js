@@ -1,19 +1,27 @@
 import React from "react";
 import Header from "../header";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-function Products({showBlocks}) {
+function Product({showBlocks}) {
     const prod = showBlocks;
+    const params = useParams();
+    const prodId = params.id;
     return(
         <main>
-          <Header/>
+          {/* <Header/>
         {prod &&
           prod.map(e =>
+            {const product = e.find(p=>p.id==prodId)
+              return (
+                <span>{product.solName}</span>
+              )
+            }
             <>
             <div className="info">
               <div className="name">
                 <label className="version">Version 2.4.0</label>
-                <NavLink to={`/products/${e.id}`}>{e.solName}</NavLink>
+                <h2>{e.solName}</h2>
               </div>
               <label className="lbl">Услуги</label>
             
@@ -27,9 +35,10 @@ function Products({showBlocks}) {
               </div>
             </div>
             </>
-          )}
+          )} */}
+          123
      </main>
     )
 }
 
-export default Products
+export default Product
