@@ -8,3 +8,8 @@
     color: #FFFFFF;
   }
   
+  .infoContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    padding: 12px;
+}

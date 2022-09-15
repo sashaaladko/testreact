@@ -3,6 +3,8 @@ import Header from "../header/header";
 import { useContext } from "react";
 import DataContext from "../../dataContext";
 import "./prices.css"
+import CardHeader from "../product/cardHeader/cardHeader";
+import MainContent from "../product/mainContent/mainContent";
 
 function Prices() {
   const {showBlocks, setShowBlocks} = useContext(DataContext)
@@ -10,25 +12,13 @@ function Prices() {
     return (
         <main>
           <Header/>
+          <div className="infoContainer">
           {price &&
             price.map(e =>
               <>
               <div className="info">
-                <div className="name">
-                  <label className="version">Version 2.4.0</label>
-                  <h2>{e.solName}</h2>
-                </div>
-                <label className="lbl">Услуги</label>
-              
-                <div className="container">
-                  {e.services && e.services.map(item=>
-  
-                    <div className="list">
-                      <span className="services">{item.name}</span>
-                      <span className="price">{item.price}</span>
-                    </div>
-                  )}
-                </div>
+                <CardHeader solName={e.solName}/>
+                <MainContent services={e.services}/>
                 <span className="lbl">Устройства</span>
                 <div className="container">
                 {e.equipment && e.equipment.map(eq=> 
@@ -41,6 +31,7 @@ function Prices() {
               </div>
               </>
             )}
+            </div>
        </main>
       )
 

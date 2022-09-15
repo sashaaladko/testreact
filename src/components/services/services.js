@@ -3,6 +3,7 @@ import Header from "../header/header";
 import { useContext } from "react";
 import DataContext from "../../dataContext";
 import "./services.css"
+import CardHeader from "../product/cardHeader/cardHeader";
 
 function Services() {
   const {showBlocks, setShowBlocks} = useContext(DataContext)
@@ -11,14 +12,12 @@ function Services() {
 
         <main>
         <Header/>
+        <div className="infoContainer">
           {serv &&
             serv.map(e =>
               <>
               <div className="info">
-                <div className="name">
-                  <label className="version">Version 2.4.0</label>
-                  <h2>{e.solName}</h2>
-                </div>
+                <CardHeader solName={e.solName}/>
                 <span className="lbl">Устройства</span>
                 <div className="container">
                 {e.equipment && e.equipment.map(eq=> 
@@ -30,6 +29,7 @@ function Services() {
               </div>
               </>
             )}
+            </div>
        </main>
       )
 
