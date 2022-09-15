@@ -2,37 +2,32 @@ import React from "react";
 import Header from "../header/header";
 import { useContext } from "react";
 import DataContext from "../../dataContext";
-import "./services.css"
-import CardHeader from "../product/cardHeader/cardHeader";
+import "./services.css";
+import ListRender from "../commonComponents/listRenderTemplate";
 
 function Services() {
-  const {showBlocks, setShowBlocks} = useContext(DataContext)
-    const serv = showBlocks;
-    return (
+  const { showBlocks, setShowBlocks } = useContext(DataContext);
+  const serv = showBlocks && showBlocks.filter((e) => e.equipment && e.equipment.length > 0);
 
-        <main>
-        <Header/>
-        <div className="infoContainer">
-          {serv &&
-            serv.map(e =>
-              <>
+  return (
+    <main>
+      <Header />
+      <div className="infoContainer">
+        {serv &&
+          serv.map((e) => (
+            <>
               <div className="info">
-                <CardHeader solName={e.solName}/>
-                <span className="lbl">Устройства</span>
-                <div className="container">
-                {e.equipment && e.equipment.map(eq=> 
-                  <div className="list">
-                    <span className="services">{eq.name}</span>
-                  </div>
-                )}
-                </div>
+                <ListRender
+                  solName={e.solName}
+                  equipment={e.equipment}
+                  mode="services"
+                />
               </div>
-              </>
-            )}
-            </div>
-       </main>
-      )
-
+            </>
+          ))}
+      </div>
+    </main>
+  );
 }
 
-export default Services
+export default Services;

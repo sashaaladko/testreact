@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import DataContext from "../../dataContext";
 import "./products.css"
-import MainContent from "../product/mainContent/mainContent";
+import ListRender from "../commonComponents/listRenderTemplate";
 
 function Products() {
     const {showBlocks, setShowBlocks} = useContext(DataContext)
@@ -21,15 +21,16 @@ function Products() {
               <div className="name">
                 <NavLink to={`/products/product/${e.id}`} className="productName">{e.solName}</NavLink>
               </div>
-              <label className="lbl">Услуги</label>
-
-                  <MainContent services={e.services}/>
+              
+              <ListRender services={e.services} mode="product"/>
             
             </div>
          
             </>
           )}
          </div>
+
+
      </main>
     )
 }

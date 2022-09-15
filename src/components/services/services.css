@@ -13,3 +13,75 @@
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     padding: 12px;
 }
+
+.main {
+  padding: 0 24px;
+  width:100%;
+  margin: aut;
+}
+.wrapper {
+ display: flex;
+ justify-content: center;
+ margin-right: 10px;
+}
+
+.info {
+  min-height: 465px;
+  padding: 24px;
+  margin: 8px;
+  background: #2C2C2E;
+  border-radius: 8px;
+  
+}
+
+
+.container {
+  background-color: #3A3A3C;
+  padding: 8px 16px 38px;
+  margin-top: 8px;
+
+  border-radius: 8px; 
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border-bottom: 1px solid #6a6a6b;
+}
+
+.container .list:last-child {
+  border-bottom: none;
+}
+
+.services {
+  flex: 6;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #FFFFFF;
+}
+
+.name h2{
+  height: 28px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  color: #FFFFFF;
+}
+
+.lbl {
+  height: 20px;
+  color: rgba(235, 235, 245, 0.6);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.version {
+  height: 18px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(235, 235, 245, 0.6);
+}

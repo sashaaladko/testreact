@@ -4,8 +4,7 @@ import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import DataContext from "../../dataContext";
 import "./product.css"
-import CardHeader from "./cardHeader/cardHeader";
-import MainContent from "./mainContent/mainContent";
+import ListRender from "../commonComponents/listRenderTemplate";
 
 function Product() {
   const {showBlocks, setShowBlocks} = useContext(DataContext)
@@ -19,8 +18,9 @@ function Product() {
             <>
             <div className="wrapper">
               <div className="info">
-                <CardHeader solName={prodCard.solName}/>
-                <MainContent services={prodCard.services}/>
+
+              <ListRender solName ={prodCard.solName} services={prodCard.services} mode="product"/>
+
               </div>
             </div>
             </>
