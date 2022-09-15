@@ -1,0 +1,23 @@
+.main {
+    padding: 0 24px;
+    width:100%;
+    margin: aut;
+  }
+  .wrapper {
+   display: flex;
+   justify-content: center;
+   margin-right: 10px;
+  }
+  
+  .info {
+    min-height: 465px;
+    padding: 24px;
+    margin: 8px;
+    background: #2C2C2E;
+    border-radius: 8px;
+    
+  }
+  
+
+  
+  

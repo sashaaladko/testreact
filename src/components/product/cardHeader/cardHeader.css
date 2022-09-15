@@ -1,0 +1,30 @@
+.name{
+    padding: 0px 0px 8px;
+    height: 54px;
+    border-bottom: 1px solid #38383A;
+    margin-bottom: 20px;
+  }
+  
+  .name h2{
+    height: 28px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    color: #FFFFFF;
+  }
+  
+  .lbl {
+    height: 20px;
+    color: rgba(235, 235, 245, 0.6);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  
+  .version {
+    height: 18px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: rgba(235, 235, 245, 0.6);
+  }

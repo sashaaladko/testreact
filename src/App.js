@@ -1,27 +1,18 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
-import Header from "./header";
-import Table from "./table";
-import Products from "./solutions/products";
-import Services from "./contents/services";
-import Prices from "./prices/prices";
-import { Router, Routes } from "react-router-dom";
-import { Route } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { useRoutes } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
 import RouteHook from "./routeHook";
+import DataContext from "./dataContext";
 
 function App() {
   const [showBlocks, setshowBlocks] = useState();
-  const [filterState, setfilterState] = useState();
-  const [stateSwap, setstateSwap] = useState(false);
-  const [shuffle, setshuffle] = useState(false);
-  const [shuffleData, setshuffleData] = useState();
   const url = "https://marketing.ikassa.by/products/solutions";
   const url2 = "https://marketing.ikassa.by/products";
   const response = fetch(url).then((r) => r.json());
   const responseProducts = fetch(url2).then((r) => r.json());
   const responses = [response, responseProducts];
+
+
+
 
 
   function JsonData() {
@@ -103,7 +94,10 @@ function App() {
       <div>
         {/* <Header/> */}
         {/* {routeResult} */}
-      <RouteHook showBlocks={showBlocks}/>
+        <DataContext.Provider value={{showBlocks, setshowBlocks}}>
+          <RouteHook />
+        </DataContext.Provider>
+ 
 
       {/* <Header/>
       <Routes>

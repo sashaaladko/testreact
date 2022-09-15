@@ -1,0 +1,23 @@
+.main {
+    padding: 0 24px;
+    width:100%;
+
+  }
+  
+  .productName {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    color: #FFFFFF;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .productName:hover {
+    text-transform: uppercase;
+  }
+  .infoContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    padding: 12px;
+}

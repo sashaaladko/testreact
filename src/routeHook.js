@@ -1,33 +1,29 @@
 import React from "react"
-import Products from "./solutions/products";
-import Services from "./contents/services";
-import Prices from "./prices/prices";
-import Header from "./header";
+import Products from "./components/products/products";
+import Services from "./components/services/services";
+import Prices from "./components/prices/prices";
 import { useRoutes } from "react-router-dom";
-import MainPage from "./main/main";
-import { useParams } from "react-router-dom";
-import Product from "./solutions/product";
+import MainPage from "./components/main/main";
+import Product from "./components/product/product";
 
 function RouteHook ({showBlocks}) {
     let routeResult = useRoutes([
 
         {
           path: "products",
-          element: <Products showBlocks={showBlocks}/>,
-          children: [
-            {
-              path: ":id",
-              element: <Product showBlocks={showBlocks}/>,
-            },
-          ]
+          element: <Products/>,
         }, 
         {
+          path: "products/product/:id",
+          element: <Product/>,
+        },
+        {
           path: "services",
-              element: <Services showBlocks={showBlocks}/>,
+              element: <Services/>,
         },
         {
           path: "prices",
-              element: <Prices showBlocks={showBlocks}/>
+              element: <Prices/>
         },
         {
           path: "/",
