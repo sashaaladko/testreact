@@ -2,6 +2,8 @@ import "./App.css";
 import React, { useEffect, useState, useContext } from "react";
 import RouteHook from "./routeHook";
 import DataContext from "./dataContext";
+import {useDispatch } from 'react-redux'
+import {getData} from "./features/mainPage/mainPageSlice";
 
 function App() {
   const [showBlocks, setshowBlocks] = useState();
@@ -10,44 +12,45 @@ function App() {
   const response = fetch(url).then((r) => r.json());
   const responseProducts = fetch(url2).then((r) => r.json());
   const responses = [response, responseProducts];
+  const dispatch = useDispatch();
 
 
 
 
 
-  function JsonData() {
-    Promise.allSettled(responses)
-      .then((results) => {
-        return results.map((result) => result.value);
-      })
-      .then((arr) => {
-        const solutions = arr[0];
-        const products = arr[1];
+  // function JsonData() {
+  //   Promise.allSettled(responses)
+  //     .then((results) => {
+  //       return results.map((result) => result.value);
+  //     })
+  //     .then((arr) => {
+  //       const solutions = arr[0];
+  //       const products = arr[1];
 
-        const solutionsData = solutions.map(function (n) {
-          if (n.contents) {
+  //       const solutionsData = solutions.map(function (n) {
+  //         if (n.contents) {
 
-            let services = n.contents.map((e) => {
-              return { name: e.name, price: e.price };
-            });
+  //           let services = n.contents.map((e) => {
+  //             return { name: e.name, price: e.price };
+  //           });
           
-            let equipment = products.filter(item=>n.equipment && n.equipment.indexOf(item.alias)+1).map(eq=>{
-              return { name: eq.name, price:eq.price}
-            })
+  //           let equipment = products.filter(item=>n.equipment && n.equipment.indexOf(item.alias)+1).map(eq=>{
+  //             return { name: eq.name, price:eq.price}
+  //           })
 
-            return { solName: n.name, id: n.id, services: services, equipment: equipment };
+  //           return { solName: n.name, id: n.id, services: services, equipment: equipment };
 
-          }
-          return { solName: n.name};
-        });
+  //         }
+  //         return { solName: n.name};
+  //       });
 
-        setshowBlocks(solutionsData);
+  //       setshowBlocks(solutionsData);
     
-      });
+  //     });
 
-  }
+  // }
   useEffect(() => {
-    JsonData();
+  dispatch(getData())
   }, []);
 
   // function Sort() {

@@ -1,13 +1,16 @@
 import React from "react";
 import "./header.css"
 import { NavLink } from "react-router-dom";
+import { useSelector } from 'react-redux'
 
-function Header() {
+function Header(props) {
+  const amount = useSelector((store)=>store.cart.amount)
     return (
         <>
          <header>
         <h1>Practice</h1>
         <NavLink to="/"><button className="btn">Главная</button></NavLink>
+        <NavLink to="cart"><button className="btn">Корзина|{amount}</button></NavLink>
         <div className="address">
           <address>i.ivanov@imlab.by</address>
           <label>

@@ -6,9 +6,8 @@ function MainPage() {
     return(
         <div className="mainPage">
             <div className="buttons">
-                <NavLink to="/products"><button className="btnmain">продукты</button></NavLink>
-                <NavLink to="/services"><button className="btnmain">Устройства</button></NavLink>
-                <NavLink to="/prices"><button className="btnmain">Цены</button></NavLink>
+                <NavLink to="/products"><button className="btnmain">Продукты</button></NavLink>
+                <NavLink to="/cart"><button className="btnmain">Корзина</button></NavLink>
             </div>
         </div>
         

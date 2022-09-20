@@ -21,3 +21,11 @@
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     padding: 12px;
 }
+
+.price{
+  flex:1;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
+}
