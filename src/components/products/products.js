@@ -2,17 +2,19 @@ import React from "react";
 import Header from "../header/header";
 import { NavLink } from "react-router-dom";
 import "./products.css"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Cart from "../cart/cart";
+import { addToCart } from "../../features/cart/cartSlice";
 
 function Products() {
 
     var initialValue = 0;
     const productItems = useSelector((store)=>store.mainPage.productItems)
 
-  function ProductCart(props) {
-    let totalPrice =props.services && props.services.reduce((previouseValue, currentValue)=>previouseValue+currentValue.price,initialValue)
-    return {name : props.solName, price : totalPrice}
+    const dispatch = useDispatch()
+  function ProductCart(services, name) {
+    let totalPrice =services && services.reduce((previouseValue, currentValue)=>previouseValue+currentValue.price,initialValue)
+    return dispatch(addToCart({name : name, price : totalPrice}))
   }
 
    
@@ -26,7 +28,7 @@ function Products() {
             <>
 
             <div className="info">
-            <button className="btn" id={e.id}>+</button>
+            <button className="btn" id={e.id} onClick={()=>ProductCart(e.services, e.solName)}>+</button>
             <label className="version">Version 2.4.0</label>
               <div className="name">
                 <NavLink to={`/products/product/${e.id}`} className="productName">{e.solName}</NavLink>

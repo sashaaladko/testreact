@@ -9,14 +9,14 @@ function listType(data) {
         <h2>{data.solName}</h2>
       </div>
       <div className="container">
-        {/* {data.services &&
+        {data.services &&
           data.mode == "product" &&
           data.services.map((item) => (
             <div className="list">
               <span className="services">{item.name}</span>
               <span className="price">{item.price}</span>
             </div>
-          ))} */}
+          ))}
         {data.mode != "product" && (
             
           <>
