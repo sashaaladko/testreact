@@ -21,16 +21,16 @@ const cartSlice = createSlice({
             }
         },
         incrementAmount: (state,action)=> {
-            const item = state.cartItems.find((item)=>item.id===action.payload);
-            item&&state.amount++
+            const item = state.cartItems.findIndex((item)=>item.id===action.payload);
+            state.cartItems[item].cartAmount+=1
         },
         decrementAmount: (state,action) =>{
-            const item = state.cartItems.find((item)=> item.id === action.payload);
-            if(item.amount===1) {
-                item.amount =1
+            const item = state.cartItems.findIndex((item)=> item.id === action.payload);
+            if(state.cartItems[item].cartAmount===1) {
+                state.cartItems[item].cartAmount =1
             }
             else {
-                item.amount--;
+                state.cartItems[item].cartAmount--;
             }
         },
 

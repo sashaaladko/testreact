@@ -3,15 +3,19 @@ import Header from "../header/header";
 import './cart.css'
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { incrementAmount } from "../../features/cart/cartSlice";
+import { incrementAmount, decrementAmount } from "../../features/cart/cartSlice";
+
 
 
 function Cart() {
     const dispatch = useDispatch()
-    const amount = useSelector((store)=>store.cart.amount)
+    const amount = useSelector((store)=>store.cart.cartItems)
     const cartItem = useSelector((store)=>store.cart.cartItems)
-    function incrAmount() {
-        return dispatch(incrementAmount)
+    function incrAmount(id) {
+        return dispatch(incrementAmount(id))
+    }
+    function decrAmount(id) {
+        return dispatch(decrementAmount(id))
     }
     function totalPrice(){
         let inval = 0
@@ -22,9 +26,16 @@ function Cart() {
         return totalPrice.reduce((a, b)=>a+b, inval)
        
     }
-    console.log(totalPrice())
-    if(amount>1001){
-        return <h1>ваша корзина пуста</h1>
+
+    if(amount.length<1){
+
+        return (
+            <>
+            <Header mode='cart'/>
+            <h1>ваша корзина пуста</h1>
+            </>
+        
+        )
     }
 
         return(
@@ -39,9 +50,9 @@ function Cart() {
                                 <span className="price">{e.price*e.cartAmount} BYN</span>
                             </div>
                             <div className="quantity">
-                                <button className="btn" onClick={incrAmount}>+</button>
+                                <button className="btn" onClick={()=>incrAmount(e.id)}>+</button>
                                 <span className="amount">{e.cartAmount}</span>
-                                <button className="btn">-</button>
+                                <button className="btn" onClick={()=>decrAmount(e.id)}>-</button>
                             </div>
                         </div>
                         <span className="price">{totalPrice}</span>
