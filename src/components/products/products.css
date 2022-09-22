@@ -22,7 +22,7 @@
     padding: 12px;
 }
 
-.price{
+.price, .totalPrice{
   flex:1;
   font-weight: 500;
   font-size: 16px;

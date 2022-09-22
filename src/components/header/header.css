@@ -52,6 +52,7 @@ header {
   }
 
   .prod{
+    flex: 5;
     height: 28px;
     font-weight: 500;
     font-size: 20px;
@@ -74,4 +75,17 @@ header {
   .btn:hover {
     background-color: #FFFFFF;
     color: #2C2C2E;
+  }
+
+  .cart{
+    display: flex;
+  }
+
+  .totalPrice{
+    margin-top: 24px;
+
+  }
+
+  .totalPriceContainer{
+    flex:1.5
   }

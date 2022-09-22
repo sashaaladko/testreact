@@ -12,7 +12,7 @@ function Header(props) {
         <h1>Practice</h1>
         <NavLink to="/"><button className="btn">Главная</button></NavLink>
         {props.mode!='cart' && <NavLink to="cart"><button className="btn">Корзина|{amount.length}</button></NavLink>}
-        
+        {props.mode=='cart'&&<button className="btn" onClick={props.btn}>Очистить корзину</button>}
         <div className="address">
           <address>i.ivanov@imlab.by</address>
           <label>
@@ -20,18 +20,15 @@ function Header(props) {
           </label>
         </div>
       </header>
-      <h1 className="prod">Товары</h1>
-      {/* <button className="btn" onClick={JsonData}>
-        Refresh
-      </button>
-      <button className="btn" onClick={Sort}>
-        Sort
-      </button>
-      <button className="btn" onClick={swapData}>Swap</button>
-      <button className="btn" onClick={isShuffled}>Shuffle</button> */}
-      {/* <NavLink to="/products"><button className="btn">продукты</button></NavLink>
-      <NavLink to="/services"><button className="btn">Устройства</button></NavLink>
-      <NavLink to="/prices"><button className="btn">Цены</button></NavLink> */}
+      <div className="cart">
+        <h1 className="prod">Товары</h1>
+        {props.mode=='cart'&&
+        <div className="totalPriceContainer">
+          <span className="totalPrice">Итоговая цена: {props.total} BYN</span>
+          <button className="btn" onClick={props.pay}>Оплатить</button>
+        </div>
+        }
+      </div>
      </>
     )
 }

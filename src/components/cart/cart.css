@@ -4,6 +4,9 @@
     padding: 8px 16px 38px;
     margin-top: 8px;
     border-radius: 8px; 
+    margin-left: 20px;
+    min-width: 1200px;
+    float: left
 }
 
 h2, .amount{
@@ -19,7 +22,7 @@ h2, .amount{
 }
 
 .quantity {
-flex:1
+flex:2
 }
 
 .infoCart{
@@ -29,4 +32,15 @@ flex:5
 .btn {
     margin: 10px;
 }
+
+.cartWrapper{
+
+}
+
+.dropdown{
+    margin-left: 50px;
+}
+
+
+
 

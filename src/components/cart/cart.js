@@ -1,15 +1,15 @@
 import React from "react";
 import Header from "../header/header";
 import './cart.css'
+import Outlet from "../outelts/outlet";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { incrementAmount, decrementAmount } from "../../features/cart/cartSlice";
+import { incrementAmount, decrementAmount, removeItem } from "../../features/cart/cartSlice";
 
 
 
 function Cart() {
     const dispatch = useDispatch()
-    const amount = useSelector((store)=>store.cart.cartItems)
     const cartItem = useSelector((store)=>store.cart.cartItems)
     function incrAmount(id) {
         return dispatch(incrementAmount(id))
@@ -17,6 +17,13 @@ function Cart() {
     function decrAmount(id) {
         return dispatch(decrementAmount(id))
     }
+    function clearCart(){
+        var result = window.confirm("Вы увеерны, что хотите очистить корзину?")
+        if(result){
+            dispatch(removeItem())
+        }
+    }
+
     function totalPrice(){
         let inval = 0
         const totalPrice= cartItem.map(e=>{
@@ -27,7 +34,11 @@ function Cart() {
        
     }
 
-    if(amount.length<1){
+    function pay(){
+        
+    }
+
+    if(cartItem.length<1){
 
         return (
             <>
@@ -40,7 +51,8 @@ function Cart() {
 
         return(
             <main>
-            <Header mode='cart'/>
+            <Header mode='cart' btn={clearCart} total={totalPrice()} pay={pay}/>
+            <div className="cartWrapper">
                     {cartItem.map(e=>{
                        return( 
                         <>
@@ -55,12 +67,12 @@ function Cart() {
                                 <button className="btn" onClick={()=>decrAmount(e.id)}>-</button>
                             </div>
                         </div>
-                        <span className="price">{totalPrice}</span>
                         </>
                        )
                     })}
-                  
-               <span className="price">Итоговая цена: {totalPrice()} BYN</span>
+                    <Outlet/>
+            </div>
+               
        </main>
         )
 

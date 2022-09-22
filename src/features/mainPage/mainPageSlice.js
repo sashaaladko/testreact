@@ -43,8 +43,6 @@ export const getData = createAsyncThunk(
     
 )
 
-
-console.log(getData)
 const mainPageSlice = createSlice({
     name: 'mainPage',
     initialState : {
