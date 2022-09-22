@@ -3,7 +3,6 @@ import Header from "../header/header";
 import { NavLink } from "react-router-dom";
 import "./products.css"
 import { useDispatch, useSelector } from "react-redux";
-import Cart from "../cart/cart";
 import { addToCart } from "../../features/cart/cartSlice";
 
 function Products() {
@@ -12,9 +11,9 @@ function Products() {
     const productItems = useSelector((store)=>store.mainPage.productItems)
 
     const dispatch = useDispatch()
-  function ProductCart(services, name) {
+  function ProductCart(id, services, name) {
     let totalPrice =services && services.reduce((previouseValue, currentValue)=>previouseValue+currentValue.price,initialValue)
-    return dispatch(addToCart({name : name, price : totalPrice}))
+    return dispatch(addToCart({id: id, name : name, price : totalPrice}))
   }
 
    
@@ -28,7 +27,7 @@ function Products() {
             <>
 
             <div className="info">
-            <button className="btn" id={e.id} onClick={()=>ProductCart(e.services, e.solName)}>+</button>
+            <button className="btn" id={e.id} onClick={()=>ProductCart(e.id,e.services, e.solName)}>+</button>
             <label className="version">Version 2.4.0</label>
               <div className="name">
                 <NavLink to={`/products/product/${e.id}`} className="productName">{e.solName}</NavLink>

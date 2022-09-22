@@ -7,7 +7,7 @@ function MainPage() {
         <div className="mainPage">
             <div className="buttons">
                 <NavLink to="/products"><button className="btnmain">Продукты</button></NavLink>
-                <NavLink to="/cart"><button className="btnmain">Корзина</button></NavLink>
+                <NavLink to="/products/cart"><button className="btnmain">Корзина</button></NavLink>
             </div>
         </div>
         

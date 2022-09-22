@@ -1,0 +1,32 @@
+.cartContainer{
+    display: flex;
+    background-color: #3A3A3C;
+    padding: 8px 16px 38px;
+    margin-top: 8px;
+    border-radius: 8px; 
+}
+
+h2, .amount{
+    height: 28px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    color: #FFFFFF;
+}
+
+.amount{
+    margin-right: 10px;
+}
+
+.quantity {
+flex:1
+}
+
+.infoCart{
+flex:5
+}
+
+.btn {
+    margin: 10px;
+}
+

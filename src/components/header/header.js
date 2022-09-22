@@ -4,13 +4,15 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from 'react-redux'
 
 function Header(props) {
-  const amount = useSelector((store)=>store.cart.amount)
+  const amount = useSelector((store)=>store.cart.cartItems)
+
     return (
         <>
          <header>
         <h1>Practice</h1>
         <NavLink to="/"><button className="btn">Главная</button></NavLink>
-        <NavLink to="cart"><button className="btn">Корзина|{amount}</button></NavLink>
+        {props.mode!='cart' && <NavLink to="cart"><button className="btn">Корзина|{amount.length}</button></NavLink>}
+        
         <div className="address">
           <address>i.ivanov@imlab.by</address>
           <label>
