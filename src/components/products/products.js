@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import "./products.css"
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../features/cart/cartSlice";
+import { cartPrice } from "../../features/cart/cartSlice";
 
 function Products() {
 
@@ -16,7 +17,7 @@ function Products() {
     return dispatch(addToCart({id: id, name : name, price : totalPrice}))
   }
 
-   
+   cartPrice()
 
     return(
         <main>

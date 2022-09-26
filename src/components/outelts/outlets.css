@@ -1,10 +1,11 @@
 .dropdown{
-    position: relative;
-    display:inline-block
+    position: fixed;
+    display:inline-block;
+    padding-top:10px;
   }
   
 .dropdown ul{
-    position: absolute;
+    position:fixed;
     background: #3A3A3C;;
     list-style: none;
     display:none;
@@ -29,4 +30,8 @@
 
 label{
     color: white
+}
+
+.selectedItem {
+    color: white;
 }

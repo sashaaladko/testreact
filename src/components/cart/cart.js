@@ -31,7 +31,6 @@ function Cart() {
            
         })
         return totalPrice.reduce((a, b)=>a+b, inval)
-       
     }
 
     function pay(){
@@ -51,7 +50,7 @@ function Cart() {
 
         return(
             <main>
-            <Header mode='cart' btn={clearCart} total={totalPrice()} pay={pay}/>
+            <Header mode='cart' btn={clearCart} total={totalPrice()} />
             <div className="cartWrapper">
                     {cartItem.map(e=>{
                        return( 

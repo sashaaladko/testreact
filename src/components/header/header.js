@@ -2,9 +2,11 @@ import React from "react";
 import "./header.css"
 import { NavLink } from "react-router-dom";
 import { useSelector } from 'react-redux'
+import { cartPrice } from "../../features/cart/cartSlice";
 
 function Header(props) {
   const amount = useSelector((store)=>store.cart.cartItems)
+  
 
     return (
         <>
@@ -25,8 +27,9 @@ function Header(props) {
         {props.mode=='cart'&&
         <div className="totalPriceContainer">
           <span className="totalPrice">Итоговая цена: {props.total} BYN</span>
-          <button className="btn" onClick={props.pay}>Оплатить</button>
+          
         </div>
+
         }
       </div>
      </>
