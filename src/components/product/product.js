@@ -14,13 +14,11 @@ function Product() {
 
     return(
         <main>
-          <Header/>
             <>
             <div className="wrapper">
               <div className="info">
 
               <ListRender solName ={prodCard.solName} services={prodCard.services} mode="product"/>
-
               </div>
             </div>
             </>

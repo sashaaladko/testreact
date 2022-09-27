@@ -1,11 +1,15 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function listType(data) {
   return (
     <>
-      {data.mode == "product" && <span className="lbl">Услуги</span>}
-
-      <div className="name">
+      {data.mode == "product" && data.mode == "products" && <span className="lbl">Услуги</span>}
+    <div className="info">
+    {/* <button className="btn"  onClick={(data.prodCart)=>}>+</button> */}
+    <label className="version">Version 2.4.0</label>
+    <div className="name">
+      {data.mode == "products" &&   <NavLink to={`/products/product/${data.id}`} className="productName">{data.solName}</NavLink>}
         <h2>{data.solName}</h2>
       </div>
       <div className="container">
@@ -17,23 +21,9 @@ function listType(data) {
               <span className="price">{item.price}</span>
             </div>
           ))}
-        {data.mode != "product" && (
-            
-          <>
-            <span className="lbl">Устройства</span>
-            <div className="container">
-              {data.equipment &&
-                data.equipment.map((eq) => (
-                  <div className="list">
-                    <span className="services">{eq.name}</span>
-                    {data.mode == "price" && <span className="price">{eq.price}</span>}
-                  </div>
-                ))}
-            </div>
-          </>
-        )}
-
       </div>
+    </div>
+     
     </>
   );
 }

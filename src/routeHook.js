@@ -4,17 +4,19 @@ import { useRoutes } from "react-router-dom";
 import MainPage from "./components/main/main";
 import Product from "./components/product/product";
 import Cart from "./components/cart/cart";
+import ProductsContainer from "./components/products/productsContainer";
+import ProductContainer from "./components/product/productContainer";
 
-function RouteHook ({showBlocks}) {
+function RouteHook () {
     let routeResult = useRoutes([
 
         {
           path: "products",
-          element: <Products/>,
+          element: <ProductsContainer/>,
         }, 
         {
-          path: "products/product/:id",
-          element: <Product/>,
+          path: "products/:id",
+          element: <ProductContainer/>,
         },
         {
           path:"products/cart",

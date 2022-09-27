@@ -15,9 +15,12 @@ const outletSlice = createSlice ({
     name: 'outlet',
     initialState : {
         outletItems: [],
+        chosenOutlet: '',
     },
     reducers: {
-
+        cartChosenOutlet: (state, action)=>{
+            state.chosenOutlet.concat({...action.payload})
+        },
     },
     extraReducers : {
         [getDataOutlet.fulfilled] : (state, action)=>{
@@ -27,3 +30,5 @@ const outletSlice = createSlice ({
 })
 
 export default outletSlice.reducer
+
+export const {cartChosenOutlet,} = outletSlice.actions

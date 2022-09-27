@@ -1,15 +1,26 @@
 import "./outlets.css"
 import { useSelector } from "react-redux"
 import { useState } from "react"
+import { cartChosenOutlet } from "../../features/outlets/outletSlice"
+import { addOutlet } from "../../features/cart/cartSlice"
+import { useDispatch } from "react-redux"
 
 
 function Outlet() {
+    const dispatch = useDispatch()
     const outletItems = useSelector((store)=>store.outlet.outletItems)
+    const cartItems = useSelector((store)=>store.cart.cartItems)
     const[outlet, setOutlet] = useState()
 
     function pay(){
         if(outlet){
-            console.log(`торговая точка:${outlet}, `)
+            dispatch(cartChosenOutlet('bj'))
+            dispatch(addOutlet(outlet))
+            const arrayCart = cartItems.map(e=>{
+                const array = e.name
+                return array
+            })
+            console.log(`торговая точка: ${outlet}, товары : ${arrayCart}`)
         }
         else {
             console.log("choose outlet")
