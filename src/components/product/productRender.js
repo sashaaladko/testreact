@@ -1,17 +1,21 @@
 import React from "react";
-import Header from "../header/header";
-import "./product.css";
+import { NavLink } from "react-router-dom";
+import icon from  '../img/icon.png'
 
 function ProductRender(data) {
+  
   return (
     <main>
       <>
+      
         <div className="wrapper">
           <div className="info">
-            <button className="btn"  onClick={data.prodCart}>+</button>
+            <button className="btn"  onClick={data.prodCart} >+</button>
             <label className="version">Version 2.4.0</label>
+            {data.isIcon && <img src={icon}/>}
             <div className="name">
-              <h2>{data.solName}</h2>
+              {!data.prodId && <NavLink to={`/products/${data.id}`} className="productName">{data.solName}</NavLink>}
+              {data.prodId && <h2>{data.solName}</h2>}
             </div>
             <div className="container">
               {data.services &&

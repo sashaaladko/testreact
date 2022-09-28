@@ -1,8 +1,5 @@
 import React from "react";
 import Header from "../header/header";
-import "./products.css";
-import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../features/cart/cartSlice";
 import ProductContainer from "../product/productContainer";
 
 function ProductsRender(data) {
