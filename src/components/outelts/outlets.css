@@ -6,10 +6,9 @@
   
 .dropdown ul{
     position:fixed;
-    background: #3A3A3C;;
+    background: #ffffff;;
     list-style: none;
     display:none;
-    border: 1px solid #9c9c9c;
     height: 400px;
     overflow-y: scroll;
 }
@@ -17,7 +16,6 @@
 .dropdown ul li{
     font-size: 15px;
     padding: 10px;
-    border-bottom: 1px solid #a5a5a5;
 }
 
 .dropdown ul li input{
@@ -30,6 +28,9 @@
 
 label{
     color: white
+}
+span{
+    color:black;
 }
 
 .selectedItem {

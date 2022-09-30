@@ -4,6 +4,8 @@ import { useState } from "react"
 import { cartChosenOutlet } from "../../features/outlets/outletSlice"
 import { addOutlet } from "../../features/cart/cartSlice"
 import { useDispatch } from "react-redux"
+import ButtonComponent from "../buttons/buttonComponent"
+import payWhite from '../img/payWhite.svg'
 
 
 function Outlet() {
@@ -29,13 +31,13 @@ function Outlet() {
     return(
         <>
         <span className="selectedItem">товар будет доставлен в {outlet}</span><br/>
-        <button className="btn" onClick={pay}>Оплатить</button>
+        <ButtonComponent color="orange" text="Оплатить" size="small" func={pay} icon={payWhite}/>
         <div className="dropdown">
             <label>выберите точку</label>
             <ul>
                 {outletItems.map(item=>{
                     return(
-                        <li><label><input type="radio" name="outlets" value={item} onChange={e=>setOutlet(e.target.value)}/>{item}</label></li>
+                        <li><span><input type="radio" name="outlets" value={item} onChange={e=>setOutlet(e.target.value)}/>{item}</span></li>
                     )
 
                 })}

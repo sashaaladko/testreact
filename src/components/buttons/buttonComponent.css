@@ -1,0 +1,60 @@
+.buttonIcon{
+    padding: 12px 16px 12px 12px;
+    font-family: 'Roboto';
+    font-size: 15px;
+    margin-left: 20px;
+    color: #FFFFFF;
+    border-radius: 4px;
+    border: none;
+}
+
+.orange{
+    background-color: #FC6F20;
+}
+
+.orange:hover {
+    background-color: #D35914;
+}
+
+.red{
+    background-color: #E51E31;
+}
+
+.red:hover{
+    background-color: #C01929;
+}
+
+.blue{
+    background-color: #007DFF;
+    margin-left: 185px;
+}
+
+.blue:hover {
+    background-color: #0057B2;
+}
+
+.buttonIcon img {
+    margin-right: 9px;
+    height: 20px;
+}
+
+.buttonIcon .large img{
+    height: 16px;
+}
+
+.small img {
+    height: 14px;
+}
+
+.small {
+    font-size: 14px;
+    padding: 12px
+}
+
+.arrow{
+    background-color:  #3A3A3C;
+}
+
+.arrow img {
+    height: 30px;
+}

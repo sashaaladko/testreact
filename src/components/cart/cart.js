@@ -5,6 +5,9 @@ import Outlet from "../outelts/outlet";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { incrementAmount, decrementAmount, removeItem } from "../../features/cart/cartSlice";
+import ButtonComponent from "../buttons/buttonComponent";
+import arrowWhiteTop from '../img/arrowWhiteTop.png'
+import arrowWhiteBottom from '../img/arrowWhiteBottom.png'
 
 
 
@@ -33,10 +36,6 @@ function Cart() {
         return totalPrice.reduce((a, b)=>a+b, inval)
     }
 
-    function pay(){
-        
-    }
-
     if(cartItem.length<1){
 
         return (
@@ -61,9 +60,9 @@ function Cart() {
                                 <span className="price">{e.price*e.cartAmount} BYN</span>
                             </div>
                             <div className="quantity">
-                                <button className="btn" onClick={()=>incrAmount(e.id)}>+</button>
+                                <ButtonComponent icon={arrowWhiteTop} name="arrow" func={()=>incrAmount(e.id)}/>
                                 <span className="amount">{e.cartAmount}</span>
-                                <button className="btn" onClick={()=>decrAmount(e.id)}>-</button>
+                                <ButtonComponent icon={arrowWhiteBottom} name="arrow" func={()=>decrAmount(e.id)}/>
                             </div>
                         </div>
                         </>

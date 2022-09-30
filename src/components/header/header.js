@@ -2,6 +2,11 @@ import React from "react";
 import "./header.css"
 import { NavLink } from "react-router-dom";
 import { useSelector } from 'react-redux'
+import home from '../img/homeWhite.svg'
+import cart from '../img/cartWhite.svg'
+import clear from '../img/clearWhite.svg'
+import prod from '../img/prodWhite.svg'
+import ButtonComponent from "../buttons/buttonComponent";
 
 function Header(props) {
   const amount = useSelector((store)=>store.cart.cartItems)
@@ -17,9 +22,19 @@ function Header(props) {
         <>
          <header>
         <h1>Practice</h1>
-        <NavLink to="/"><button className="btn">Главная</button></NavLink>
-        {props.mode!='cart' && <NavLink to="cart"><button className="btn">Корзина|{amountCart()}</button></NavLink>}
-        {props.mode=='cart'&&<button className="btn" onClick={props.btn}>Очистить корзину</button>}
+        
+        {props.mode!='cart' &&
+        <>
+          <NavLink to="/"><ButtonComponent color="orange" icon={home} text="Главная" size="small"/></NavLink>
+         <NavLink to="cart"><ButtonComponent color="orange" icon={cart} size="small" text={`Корзина|${amountCart()}`}/></NavLink>
+        </>
+        }
+        {props.mode=='cart'&&
+        <>
+          <NavLink to="/products"><ButtonComponent color="orange" icon={prod} text="Продукты" size="small"/></NavLink>
+          <ButtonComponent color="red" icon={clear} text="Очистить корзину" func={props.btn} size="small"/>
+        </>
+        }
         <div className="address">
           <address>i.ivanov@imlab.by</address>
           <label>
@@ -32,7 +47,6 @@ function Header(props) {
         {props.mode=='cart'&&
         <div className="totalPriceContainer">
           <span className="totalPrice">Итоговая цена: {props.total} BYN</span>
-          
         </div>
 
         }

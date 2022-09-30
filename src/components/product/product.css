@@ -70,7 +70,7 @@
     color: rgba(235, 235, 245, 0.6);
   }
 
-  img{
+  .cartIcon{
     width: 20px;
     height: 20px;
     margin-left: 30px;

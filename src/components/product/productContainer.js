@@ -7,7 +7,6 @@ import { addToCart } from "../../features/cart/cartSlice";
 import Header from "../header/header";
 import { useState } from "react";
 import { useEffect } from "react";
-import icon from  '../img/icon.png'
 
 function ProductContainer(data) {
   const [isIcon, setIcon] = useState(false)
@@ -25,15 +24,12 @@ function ProductContainer(data) {
         setIcon(true)
         return  dispatch(addToCart({id: data.id, name : data.solName, price : totalPrice}))
     }
-
       
-          useEffect(()=>{
-              setTimeout(()=>{setIcon(false)}, 2000)
+    useEffect(()=>{
+      setTimeout(()=>{setIcon(false)}, 2000)
         
-          },[isIcon])
+    },[isIcon])
  
-
-  
 
     return prodId ? (
         <>

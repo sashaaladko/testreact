@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import icon from  '../img/icon.png'
+import ButtonComponent from "../buttons/buttonComponent";
+import add from '../img/addWhite.svg'
 
 function ProductRender(data) {
   
@@ -10,9 +12,9 @@ function ProductRender(data) {
       
         <div className="wrapper">
           <div className="info">
-            <button className="btn"  onClick={data.prodCart} >+</button>
             <label className="version">Version 2.4.0</label>
-            {data.isIcon && <img src={icon}/>}
+            <ButtonComponent color="blue" size="small" text="Добавить" icon={add} func={data.prodCart}/>
+            {data.isIcon && <img className="cartIcon" src={icon}/>}
             <div className="name">
               {!data.prodId && <NavLink to={`/products/${data.id}`} className="productName">{data.solName}</NavLink>}
               {data.prodId && <h2>{data.solName}</h2>}

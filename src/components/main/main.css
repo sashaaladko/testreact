@@ -1,18 +1,5 @@
-.btnmain {
-    margin-left: 20px;
-    height: 80px;
-    width: 80px;
-    background-color: #2C2C2E;
-    color: #FFFFFF;
-    border-radius: 15%;
-    border:#2C2C2E;
-    transition: 1s linear;
-}
 
-.btnmain:hover {
-    background-color: #5d5d5e;
-    color: #2C2C2E
-}
+
 
 
 

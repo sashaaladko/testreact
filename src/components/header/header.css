@@ -65,16 +65,17 @@ header {
 
   .btn {
     margin-left: 34px;
-    width: 70px;
-    height: 30px;
-    background-color: #2C2C2E;
+    padding: 8px 12px 12px 12px;
+    background-color: #FC6F20;
     color: #FFFFFF;
-    border-radius: 15%;
-    border:#2C2C2E;
+    border-radius: 4px;
   }
   .btn:hover {
-    background-color: #FFFFFF;
-    color: #2C2C2E;
+    background-color: #D35914;
+  }
+
+  .headerIcon {
+    padding-right: 9px;
   }
 
   .cart{
