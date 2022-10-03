@@ -4,7 +4,21 @@ import icon from  '../img/icon.png'
 import ButtonComponent from "../buttons/buttonComponent";
 import add from '../img/addWhite.svg'
 
-function ProductRender(data) {
+interface Props{
+  isIcon?: boolean;
+  id?: number[];
+  solName?: string[];
+  prodId?: number;
+  services?: string[];
+  prodCart?: any;
+}
+
+interface Data{
+  name: string;
+  price: number;
+}
+
+const ProductRender:React.FC<Props> = ({isIcon, id, solName, prodId, services, prodCart})=>{
   
   return (
     <main>
@@ -13,15 +27,15 @@ function ProductRender(data) {
         <div className="wrapper">
           <div className="info">
             <label className="version">Version 2.4.0</label>
-            <ButtonComponent color="blue" size="small" text="Добавить" icon={add} func={data.prodCart}/>
-            {data.isIcon && <img className="cartIcon" src={icon}/>}
+            <ButtonComponent color="blue" size="small" text="Добавить" icon={add} func={prodCart}/>
+            {isIcon && <img className="cartIcon" src={icon}/>}
             <div className="name">
-              {!data.prodId && <NavLink to={`/products/${data.id}`} className="productName">{data.solName}</NavLink>}
-              {data.prodId && <h2>{data.solName}</h2>}
+              {!prodId && <NavLink to={`/products/${id}`} className="productName">{solName}</NavLink>}
+              {prodId && <h2>{solName}</h2>}
             </div>
             <div className="container">
-              {data.services &&
-                data.services.map((item) => (
+              {services &&
+                services.map((item: any) => (
                   <div className="list">
                     <span className="services">{item.name}</span>
                     <span className="price">{item.price}</span>

@@ -1,7 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
+interface Data{
+  id: number;
+  value:string;
+  contents: any;
+  name:string;
+  price: string;
+  equipment: string;
+  alias: string;
 
-export const getData = createAsyncThunk(
+
+}
+
+export const getData:any = createAsyncThunk(
     'mainPage/getData',
      function json() {
       const url = "https://marketing.ikassa.by/products/solutions";
@@ -11,20 +22,20 @@ export const getData = createAsyncThunk(
       const responses = [response, responseProducts];
       return Promise.allSettled(responses)
           .then((results) => {
-            return results.map((result) => result.value);
+            return results.map((result:any) => result.value);
           })
           .then((arr) => {
             const solutions = arr[0];
             const products = arr[1];
     
-            const solutionsData = solutions.map(function (n) {
+            const solutionsData = solutions.map((n:Data)=> {
               if (n.contents) {
     
-                let services = n.contents.map((e) => {
+                let services = n.contents.map((e:Data) => {
                   return { name: e.name, price: e.price };
                 });
               
-                let equipment = products.filter(item=>n.equipment && n.equipment.indexOf(item.alias)+1).map(eq=>{
+                let equipment = products.filter((item:Data)=>n.equipment && n.equipment.indexOf(item.alias)+1).map((eq:Data)=>{
                   return { name: eq.name, price:eq.price}
                 })
     

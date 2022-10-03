@@ -1,13 +1,11 @@
 import React from "react"
-import Products from "./components/products/products";
 import { useRoutes } from "react-router-dom";
 import MainPage from "./components/main/main";
-import Product from "./components/product/product";
 import Cart from "./components/cart/cart";
 import ProductsContainer from "./components/products/productsContainer";
 import ProductContainer from "./components/product/productContainer";
 
-function RouteHook () {
+const RouteHook:React.FC = () => {
     let routeResult = useRoutes([
 
         {

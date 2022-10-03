@@ -8,14 +8,25 @@ import clear from '../img/clearWhite.svg'
 import prod from '../img/prodWhite.svg'
 import ButtonComponent from "../buttons/buttonComponent";
 
-function Header(props) {
-  const amount = useSelector((store)=>store.cart.cartItems)
+interface Props {
+  mode?: string;
+  total?: number;
+  btn?: ()=>void;
+}
+
+interface Data{
+  cartAmount: number;
+
+}
+
+const Header:React.FC<Props>=({mode, total, btn})=> {
+  const amount = useSelector((store:any)=>store.cart.cartItems)
   function amountCart(){
     const initialValue = 0
-    const cartAmount=amount.map(e=>{
+    const cartAmount=amount.map((e:Data)=>{
       return e.cartAmount
     })
-    return cartAmount.reduce((a,b)=>a+b, initialValue)
+    return cartAmount.reduce((a: number,b: number)=>a+b, initialValue)
   }
   
     return (
@@ -23,16 +34,16 @@ function Header(props) {
          <header>
         <h1>Practice</h1>
         
-        {props.mode!='cart' &&
+        {mode!='cart' &&
         <>
           <NavLink to="/"><ButtonComponent color="orange" icon={home} text="Главная" size="small"/></NavLink>
          <NavLink to="cart"><ButtonComponent color="orange" icon={cart} size="small" text={`Корзина|${amountCart()}`}/></NavLink>
         </>
         }
-        {props.mode=='cart'&&
+        {mode=='cart'&&
         <>
           <NavLink to="/products"><ButtonComponent color="orange" icon={prod} text="Продукты" size="small"/></NavLink>
-          <ButtonComponent color="red" icon={clear} text="Очистить корзину" func={props.btn} size="small"/>
+          <ButtonComponent color="red" icon={clear} text="Очистить корзину" func={btn} size="small"/>
         </>
         }
         <div className="address">
@@ -44,9 +55,9 @@ function Header(props) {
       </header>
       <div className="cart">
         <h1 className="prod">Товары</h1>
-        {props.mode=='cart'&&
+        {mode=='cart'&&
         <div className="totalPriceContainer">
-          <span className="totalPrice">Итоговая цена: {props.total} BYN</span>
+          <span className="totalPrice">Итоговая цена: {total} BYN</span>
         </div>
 
         }

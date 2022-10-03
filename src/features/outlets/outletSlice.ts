@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-export const getDataOutlet = createAsyncThunk(
+export const getDataOutlet:any = createAsyncThunk(
     'outlet/getDataOutlet',
       async function json(){
         const url = "https://marketing.test.imlab.by/docs/torg_types"

@@ -1,24 +1,25 @@
 import "./outlets.css"
+import React from "react"
 import { useSelector } from "react-redux"
 import { useState } from "react"
-import { cartChosenOutlet } from "../../features/outlets/outletSlice"
-import { addOutlet } from "../../features/cart/cartSlice"
 import { useDispatch } from "react-redux"
 import ButtonComponent from "../buttons/buttonComponent"
 import payWhite from '../img/payWhite.svg'
 
+interface Data{
+    name: string;
+
+}
 
 function Outlet() {
     const dispatch = useDispatch()
-    const outletItems = useSelector((store)=>store.outlet.outletItems)
-    const cartItems = useSelector((store)=>store.cart.cartItems)
+    const outletItems = useSelector((store:any)=>store.outlet.outletItems)
+    const cartItems = useSelector((store:any)=>store.cart.cartItems)
     const[outlet, setOutlet] = useState()
 
     function pay(){
         if(outlet){
-            dispatch(cartChosenOutlet('bj'))
-            dispatch(addOutlet(outlet))
-            const arrayCart = cartItems.map(e=>{
+            const arrayCart = cartItems.map((e:Data)=>{
                 const array = e.name
                 return array
             })
@@ -35,9 +36,9 @@ function Outlet() {
         <div className="dropdown">
             <label>выберите точку</label>
             <ul>
-                {outletItems.map(item=>{
+                {outletItems.map((item:string)=>{
                     return(
-                        <li><span><input type="radio" name="outlets" value={item} onChange={e=>setOutlet(e.target.value)}/>{item}</span></li>
+                        <li><span><input type="radio" name="outlets" value={item} onChange={(e: any)=>setOutlet(e.target.value)}/>{item}</span></li>
                     )
 
                 })}

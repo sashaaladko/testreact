@@ -6,7 +6,7 @@ import ProductsRender from "./productsRender";
 
 function ProductsContainer() {
 
-    const productItems = useSelector((store)=>store.mainPage.productItems)
+    const productItems = useSelector((store:any)=>store.mainPage.productItems)
     return(
        <ProductsRender productItems = {productItems} />
     )

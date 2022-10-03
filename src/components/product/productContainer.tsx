@@ -7,22 +7,34 @@ import { addToCart } from "../../features/cart/cartSlice";
 import Header from "../header/header";
 import { useState } from "react";
 import { useEffect } from "react";
+import './product.css'
 
-function ProductContainer(data) {
-  const [isIcon, setIcon] = useState(false)
+interface Data{
+  id: number[];
+  price: number;
+}
+
+interface Props {
+  id?: number[];
+  solName?: string[];
+  services?: string[];
+}
+
+const ProductContainer:React.FC<Props>=({id, solName, services})=> {
+  const [isIcon, setIcon] = useState<boolean>(false)
 
     const dispatch = useDispatch()
     const initialValue=0
-  const productItem = useSelector((store)=>store.mainPage.productItems)
+  const productItem = useSelector((store:any)=>store.mainPage.productItems)
     const params = useParams();
-    const prodId = params.id;
+    const prodId:any= params.id;
 
-    const prodCard = productItem  && productItem.find(f => f.id==prodId)
+    const prodCard = productItem  && productItem.find((e:Data) => e.id==prodId)
 
     function ProductCart() {
-        let totalPrice =data.services && data.services.reduce((previouseValue, currentValue)=>previouseValue+currentValue.price,initialValue)
+        let totalPrice =services && services.reduce((previouseValue:number, currentValue: any)=>previouseValue+currentValue.price,initialValue)
         setIcon(true)
-        return  dispatch(addToCart({id: data.id, name : data.solName, price : totalPrice}))
+        return  dispatch(addToCart({id: id, name : solName, price : totalPrice}))
     }
       
     useEffect(()=>{
@@ -36,7 +48,7 @@ function ProductContainer(data) {
         <Header/>
         <ProductRender solName={prodCard.solName} services={prodCard.services} prodCart={ProductCart} prodId={prodId}  isIcon={isIcon}/>
         </>
-    ) : (  <ProductRender solName={data.solName} services={data.services} prodCart={ProductCart} id={data.id}  isIcon={isIcon}/> )
+    ) : (  <ProductRender solName={solName} services={services} prodCart={ProductCart} id={id}  isIcon={isIcon}/> )
 }
 
 export default ProductContainer

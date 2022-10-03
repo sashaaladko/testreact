@@ -11,6 +11,6 @@ export const store = configureStore({
         mainPage: mainPageReducer,
         outlet : outletReducer,
     }, 
-    composeWithDevTools, 
+    devTools: process.env.NODE_ENV !== "development" ? false : true,
 
 })

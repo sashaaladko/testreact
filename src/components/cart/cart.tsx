@@ -9,31 +9,36 @@ import ButtonComponent from "../buttons/buttonComponent";
 import arrowWhiteTop from '../img/arrowWhiteTop.png'
 import arrowWhiteBottom from '../img/arrowWhiteBottom.png'
 
-
+interface Data{
+    price: number;
+    cartAmount: number;
+    id: number;
+    name: string; 
+}
 
 function Cart() {
     const dispatch = useDispatch()
-    const cartItem = useSelector((store)=>store.cart.cartItems)
-    function incrAmount(id) {
+    const cartItem = useSelector((store:any)=>store.cart.cartItems)
+    function incrAmount(id:number) {
         return dispatch(incrementAmount(id))
     }
-    function decrAmount(id) {
+    function decrAmount(id:number) {
         return dispatch(decrementAmount(id))
     }
-    function clearCart(){
+    function clearCart():void{
         var result = window.confirm("Вы увеерны, что хотите очистить корзину?")
         if(result){
             dispatch(removeItem())
         }
     }
 
-    function totalPrice(){
-        let inval = 0
-        const totalPrice= cartItem.map(e=>{
+    function totalPrice():number{
+        let inval:number = 0
+        const totalPrice= cartItem.map((e: Data)=>{
            return e.price*e.cartAmount
            
         })
-        return totalPrice.reduce((a, b)=>a+b, inval)
+        return totalPrice.reduce((a: number, b: number)=>a+b, inval)
     }
 
     if(cartItem.length<1){
@@ -51,7 +56,7 @@ function Cart() {
             <main>
             <Header mode='cart' btn={clearCart} total={totalPrice()} />
             <div className="cartWrapper">
-                    {cartItem.map(e=>{
+                    {cartItem.map((e:Data)=>{
                        return( 
                         <>
                          <div className="cartContainer">
