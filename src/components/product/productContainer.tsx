@@ -1,40 +1,59 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
 import ProductRender from "./productRender";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../hooks";
+import { useAppSelector } from "../../hooks";
 import { addToCart } from "../../features/cart/cartSlice";
 import Header from "../header/header";
 import { useState } from "react";
 import { useEffect } from "react";
 import './product.css'
+import type {CartData} from '../../features/cart/cartSlice'
+import type {Data} from '../../features/mainPage/mainPageSlice'
 
-interface Data{
-  id: number[];
-  price: number;
+
+interface ProdData{
+  id?: number[];
+  price?: number;
 }
 
 interface Props {
-  id?: number[];
+  id?: number;
   solName?: string[];
   services?: string[];
 }
 
+type ProductCart={
+  solName: string[];
+  services: string[];
+
+}
+
 const ProductContainer:React.FC<Props>=({id, solName, services})=> {
   const [isIcon, setIcon] = useState<boolean>(false)
-
-    const dispatch = useDispatch()
-    const initialValue=0
-  const productItem = useSelector((store:any)=>store.mainPage.productItems)
+  let totalPrice:number=0;
+    const dispatch = useAppDispatch()
+    const initialValue:number=0
+  const productItem = useAppSelector((store)=>store.mainPage.productItems)
     const params = useParams();
     const prodId:any= params.id;
 
-    const prodCard = productItem  && productItem.find((e:Data) => e.id==prodId)
+    const prodCard:any = productItem  && productItem.find((e:any) => e.id==prodId)
 
     function ProductCart() {
-        let totalPrice =services && services.reduce((previouseValue:number, currentValue: any)=>previouseValue+currentValue.price,initialValue)
+      console.log(id)
+      if(services!==undefined)
+      {
+       return  totalPrice=services && services.reduce((previouseValue:number, currentValue: any)=>previouseValue+currentValue.price,initialValue)
+      }
+       
         setIcon(true)
-        return  dispatch(addToCart({id: id, name : solName, price : totalPrice}))
+        if (id!==undefined)
+        {
+          console.log({id: id, name : solName, price : totalPrice})
+          return  dispatch(addToCart({id: id, name : solName, price : totalPrice}))
+        }
+        
     }
       
     useEffect(()=>{

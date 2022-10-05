@@ -6,9 +6,9 @@ import add from '../img/addWhite.svg'
 
 interface Props{
   isIcon?: boolean;
-  id?: number[];
+  id?: number[]|number;
   solName?: string[];
-  prodId?: number;
+  prodId?: number[];
   services?: string[];
   prodCart?: any;
 }
@@ -21,7 +21,7 @@ interface Data{
 const ProductRender:React.FC<Props> = ({isIcon, id, solName, prodId, services, prodCart})=>{
   
   return (
-    <main>
+
       <>
       
         <div className="wrapper">
@@ -45,7 +45,7 @@ const ProductRender:React.FC<Props> = ({isIcon, id, solName, prodId, services, p
           </div>
         </div>
       </>
-    </main>
+
   );
 }
 

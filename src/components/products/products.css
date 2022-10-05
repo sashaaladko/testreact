@@ -4,7 +4,7 @@
 
   }
   
-  .productName {
+.productName {
     font-weight: 500;
     font-size: 20px;
     line-height: 28px;
@@ -13,13 +13,20 @@
     cursor: pointer;
   }
 
-  .productName:hover {
+.productName:hover {
     text-transform: uppercase;
   }
-  .infoContainer {
+.infoContainer {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     padding: 12px;
+}
+
+.wrapper:hover{
+  grid-column: span 2;
+  grid-row: span 2;
+  display: grid;
+  grid: subgrid;
 }
 
 .price, .totalPrice{
@@ -29,3 +36,4 @@
   line-height: 24px;
   color: #FFFFFF;
 }
+

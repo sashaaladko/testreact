@@ -21,9 +21,9 @@ interface Data{
 
 const Header:React.FC<Props>=({mode, total, btn})=> {
   const amount = useSelector((store:any)=>store.cart.cartItems)
-  function amountCart(){
-    const initialValue = 0
-    const cartAmount=amount.map((e:Data)=>{
+  function amountCart():number{
+    const initialValue:number = 0
+    const cartAmount:number[]=amount.map((e:Data)=>{
       return e.cartAmount
     })
     return cartAmount.reduce((a: number,b: number)=>a+b, initialValue)

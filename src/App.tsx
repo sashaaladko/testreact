@@ -1,12 +1,12 @@
 import "./App.css";
 import React, { useEffect } from "react";
 import RouteHook from "./routeHook";
-import {useDispatch } from 'react-redux'
+import { useAppDispatch } from "./hooks";
 import {getData} from "./features/mainPage/mainPageSlice";
 import { getDataOutlet } from "./features/outlets/outletSlice";
 
 const App: React.FC =()=> {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
   dispatch(getData())

@@ -2,23 +2,25 @@ import React from "react";
 import Header from "../header/header";
 import './cart.css'
 import Outlet from "../outelts/outlet";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../hooks";
+import { useAppSelector } from "../../hooks";
 import { incrementAmount, decrementAmount, removeItem } from "../../features/cart/cartSlice";
 import ButtonComponent from "../buttons/buttonComponent";
 import arrowWhiteTop from '../img/arrowWhiteTop.png'
 import arrowWhiteBottom from '../img/arrowWhiteBottom.png'
+import type {RootState} from '../../redux/store'
+import type {CartData} from '../../features/cart/cartSlice'
 
 interface Data{
     price: number;
-    cartAmount: number;
+    cartAmount?: number|undefined;
     id: number;
     name: string; 
 }
 
 function Cart() {
-    const dispatch = useDispatch()
-    const cartItem = useSelector((store:any)=>store.cart.cartItems)
+    const dispatch = useAppDispatch()
+    const cartItem = useAppSelector((store)=>store.cart.cartItems)
     function incrAmount(id:number) {
         return dispatch(incrementAmount(id))
     }
@@ -34,7 +36,7 @@ function Cart() {
 
     function totalPrice():number{
         let inval:number = 0
-        const totalPrice= cartItem.map((e: Data)=>{
+        const totalPrice = cartItem.map((e: CartData)=>{
            return e.price*e.cartAmount
            
         })
@@ -56,7 +58,8 @@ function Cart() {
             <main>
             <Header mode='cart' btn={clearCart} total={totalPrice()} />
             <div className="cartWrapper">
-                    {cartItem.map((e:Data)=>{
+                    {cartItem.map((e)=>{
+              
                        return( 
                         <>
                          <div className="cartContainer">

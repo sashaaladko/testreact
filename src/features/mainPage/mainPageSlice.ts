@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-interface Data{
+export type Data={
   id: number;
   value:string;
   contents: any;
@@ -8,11 +8,18 @@ interface Data{
   price: string;
   equipment: string;
   alias: string;
-
-
+  solName?:string;
+  services?:string;
 }
 
-export const getData:any = createAsyncThunk(
+type ProductState={
+  productItems: Data[]
+}
+const initialState: ProductState={
+  productItems: []
+}
+
+export const getData= createAsyncThunk<Data[]>(
     'mainPage/getData',
      function json() {
       const url = "https://marketing.ikassa.by/products/solutions";
@@ -27,10 +34,9 @@ export const getData:any = createAsyncThunk(
           .then((arr) => {
             const solutions = arr[0];
             const products = arr[1];
-    
             const solutionsData = solutions.map((n:Data)=> {
               if (n.contents) {
-    
+               
                 let services = n.contents.map((e:Data) => {
                   return { name: e.name, price: e.price };
                 });
@@ -48,24 +54,20 @@ export const getData:any = createAsyncThunk(
             return solutionsData
         
           });
-    
     }
- 
-    
 )
 
 const mainPageSlice = createSlice({
     name: 'mainPage',
-    initialState : {
-      productItems: [],
-    }, 
+    initialState, 
     reducers: {
 
     },
-    extraReducers: {
-      [getData.fulfilled]: (state, action)=>{
+    extraReducers: (builder)=>{
+      builder.addCase(getData.fulfilled, (state, action)=>{
         state.productItems = action.payload
-      }
+      })
+      
     },
 })
 

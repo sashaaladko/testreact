@@ -6,7 +6,7 @@ interface Props{
   productItems: object[];
 }
 interface Data{
-  id?: number[];
+  id?: number;
   solName?: string[];
   services?: string[];
 }

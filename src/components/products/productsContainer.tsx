@@ -1,12 +1,12 @@
 import React from "react";
 import "./products.css"
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../hooks";
 import ProductsRender from "./productsRender";
 
 
 function ProductsContainer() {
 
-    const productItems = useSelector((store:any)=>store.mainPage.productItems)
+    const productItems = useAppSelector((store)=>store.mainPage.productItems)
     return(
        <ProductsRender productItems = {productItems} />
     )
