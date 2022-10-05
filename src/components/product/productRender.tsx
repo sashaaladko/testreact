@@ -6,11 +6,14 @@ import add from '../img/addWhite.svg'
 
 interface Props{
   isIcon?: boolean;
-  id?: number[]|number;
+  id?: string;
   solName?: string[];
   prodId?: number[];
   services?: string[];
   prodCart?: any;
+  gridComp?:any;
+  isClicked?: boolean;
+  elemActive?:string;
 }
 
 interface Data{
@@ -18,20 +21,35 @@ interface Data{
   price: number;
 }
 
-const ProductRender:React.FC<Props> = ({isIcon, id, solName, prodId, services, prodCart})=>{
+const ProductRender:React.FC<Props> = ({isIcon, id, solName, prodId, services, prodCart, gridComp, elemActive, isClicked})=>{
+  let isActive: string = 'inactive'
+  if (elemActive==id)
+  {
+    isActive =  isClicked ? "active" : "inactive";
+  }
+  if(prodId) {
+    isActive ='inactive';
+  }
+ 
   
   return (
 
       <>
       
-        <div className="wrapper">
+          <div className={`wrapper ${isActive}`} onClick={()=>gridComp(id)}>
           <div className="info">
-            <label className="version">Version 2.4.0</label>
-            <ButtonComponent color="blue" size="small" text="Добавить" icon={add} func={prodCart}/>
-            {isIcon && <img className="cartIcon" src={icon}/>}
-            <div className="name">
-              {!prodId && <NavLink to={`/products/${id}`} className="productName">{solName}</NavLink>}
-              {prodId && <h2>{solName}</h2>}
+            <div className="productHeader">
+              <div className="nameVersion">
+                <label className="version">Version 2.4.0</label>
+                {isIcon && <img className="cartIcon" src={icon}/>}
+                <div className="name">
+                  {!prodId && <NavLink to={`/products/${id}`} className="productName">{solName}</NavLink>}
+                  {prodId && <h2>{solName}</h2>}
+                </div>
+              </div>
+              <div className="btnComponent">
+                <ButtonComponent color="blue" size="small" text="Добавить" name={`${isActive}`} icon={add} func={prodCart}/>
+              </div>
             </div>
             <div className="container">
               {services &&
@@ -43,7 +61,7 @@ const ProductRender:React.FC<Props> = ({isIcon, id, solName, prodId, services, p
                 ))}
             </div>
           </div>
-        </div>
+          </div>
       </>
 
   );

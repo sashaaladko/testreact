@@ -36,14 +36,14 @@ const Header:React.FC<Props>=({mode, total, btn})=> {
         
         {mode!='cart' &&
         <>
-          <NavLink to="/"><ButtonComponent color="orange" icon={home} text="Главная" size="small"/></NavLink>
-         <NavLink to="cart"><ButtonComponent color="orange" icon={cart} size="small" text={`Корзина|${amountCart()}`}/></NavLink>
+          <NavLink to="/"><ButtonComponent color="orange" icon={home} text="Главная" size="medium"/></NavLink>
+         <NavLink to="cart"><ButtonComponent color="orange" icon={cart} size="medium" text={`Корзина|${amountCart()}`}/></NavLink>
         </>
         }
         {mode=='cart'&&
         <>
-          <NavLink to="/products"><ButtonComponent color="orange" icon={prod} text="Продукты" size="small"/></NavLink>
-          <ButtonComponent color="red" icon={clear} text="Очистить корзину" func={btn} size="small"/>
+          <NavLink to="/products"><ButtonComponent color="orange" icon={prod} text="Продукты" size="medium"/></NavLink>
+          <ButtonComponent color="red" icon={clear} text="Очистить корзину" func={btn} size="medium"/>
         </>
         }
         <div className="address">

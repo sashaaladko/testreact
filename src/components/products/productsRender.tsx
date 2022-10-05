@@ -4,14 +4,17 @@ import ProductContainer from "../product/productContainer";
 
 interface Props{
   productItems: object[];
+  GridComp: (id:string)=>void; 
+  elemActive: string;
+  isClicked: boolean;
 }
 interface Data{
-  id?: number;
+  id?: string;
   solName?: string[];
   services?: string[];
 }
 
-const ProductsRender:React.FC<Props> = ({productItems})=> {
+const ProductsRender:React.FC<Props> = ({productItems, GridComp, elemActive, isClicked})=> {
 
   return (
     <main>
@@ -20,7 +23,7 @@ const ProductsRender:React.FC<Props> = ({productItems})=> {
         {productItems &&
           productItems.map((e: Data) => (
             <>
-              <ProductContainer id={e.id} solName={e.solName} services={e.services} />
+              <ProductContainer id={e.id} solName={e.solName} services={e.services} GridComp={GridComp} elemActive={elemActive} isClicked={isClicked} />
             </>
           ))}
       </div>

@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export type Data={
-  id: number;
+  id: string;
   value:string;
   contents: any;
   name:string;

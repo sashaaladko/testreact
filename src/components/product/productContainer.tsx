@@ -8,29 +8,22 @@ import Header from "../header/header";
 import { useState } from "react";
 import { useEffect } from "react";
 import './product.css'
-import type {CartData} from '../../features/cart/cartSlice'
-import type {Data} from '../../features/mainPage/mainPageSlice'
 
-
-interface ProdData{
-  id?: number[];
-  price?: number;
-}
 
 interface Props {
-  id?: number;
+  id?: string;
   solName?: string[];
   services?: string[];
-}
-
-type ProductCart={
-  solName: string[];
-  services: string[];
+  GridComp?: (id:string)=>void;
+  elemActive?: string;
+  isClicked?:boolean
 
 }
 
-const ProductContainer:React.FC<Props>=({id, solName, services})=> {
+
+const ProductContainer:React.FC<Props>=({id, solName, services, GridComp, elemActive, isClicked})=> {
   const [isIcon, setIcon] = useState<boolean>(false)
+
   let totalPrice:number=0;
     const dispatch = useAppDispatch()
     const initialValue:number=0
@@ -40,17 +33,17 @@ const ProductContainer:React.FC<Props>=({id, solName, services})=> {
 
     const prodCard:any = productItem  && productItem.find((e:any) => e.id==prodId)
 
+
+
     function ProductCart() {
-      console.log(id)
       if(services!==undefined)
       {
-       return  totalPrice=services && services.reduce((previouseValue:number, currentValue: any)=>previouseValue+currentValue.price,initialValue)
+        totalPrice=services && services.reduce((previouseValue:number, currentValue: any)=>previouseValue+currentValue.price,initialValue)
       }
        
         setIcon(true)
         if (id!==undefined)
         {
-          console.log({id: id, name : solName, price : totalPrice})
           return  dispatch(addToCart({id: id, name : solName, price : totalPrice}))
         }
         
@@ -65,9 +58,15 @@ const ProductContainer:React.FC<Props>=({id, solName, services})=> {
     return prodId ? (
         <>
         <Header/>
-        <ProductRender solName={prodCard.solName} services={prodCard.services} prodCart={ProductCart} prodId={prodId}  isIcon={isIcon}/>
+        <ProductRender solName={prodCard.solName} services={prodCard.services} prodCart={ProductCart} prodId={prodId}  isIcon={isIcon} />
         </>
-    ) : (  <ProductRender solName={solName} services={services} prodCart={ProductCart} id={id}  isIcon={isIcon}/> )
+    ) : (  <>
+
+            <ProductRender solName={solName} services={services} prodCart={ProductCart} id={id}  isIcon={isIcon} gridComp={GridComp} elemActive={elemActive} isClicked={isClicked}/> 
+           
+          </>
+          
+        )
 }
 
 export default ProductContainer

@@ -11,20 +11,14 @@ import arrowWhiteBottom from '../img/arrowWhiteBottom.png'
 import type {RootState} from '../../redux/store'
 import type {CartData} from '../../features/cart/cartSlice'
 
-interface Data{
-    price: number;
-    cartAmount?: number|undefined;
-    id: number;
-    name: string; 
-}
 
 function Cart() {
     const dispatch = useAppDispatch()
     const cartItem = useAppSelector((store)=>store.cart.cartItems)
-    function incrAmount(id:number) {
+    function incrAmount(id:string) {
         return dispatch(incrementAmount(id))
     }
-    function decrAmount(id:number) {
+    function decrAmount(id:string) {
         return dispatch(decrementAmount(id))
     }
     function clearCart():void{
