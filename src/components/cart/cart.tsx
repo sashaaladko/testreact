@@ -57,7 +57,7 @@ function Cart() {
         return(
             <>
 
-            <Header mode='cart' btn={clearCart} total={totalPrice()} />
+            <Header mode='cart' btn={clearCart} total={totalPrice()} changeTheme={changeTheme}/>
 
                     {cartItem.map((e)=>{
               
