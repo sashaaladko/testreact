@@ -13,7 +13,7 @@ interface Props {
 const ButtonComponent: React.FC<Props> = ({color, size, name, text, func, icon}) => {
  
     return (
-        <button className={`buttonIcon ${color} ${size} ${name}` } onClick={func} ><img src={icon}/>{text}</button>
+        <button className={`buttonIcon ${color} ${size} ${name}` } onClick={func}  ><img src={icon}/><a>{text}</a> </button>
     )
 }
 

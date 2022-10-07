@@ -17,11 +17,12 @@ interface Props {
   GridComp?: (id:string)=>void;
   elemActive?: string;
   isClicked?:boolean
+  theme?:string
 
 }
 
 
-const ProductContainer:React.FC<Props>=({id, solName, services, GridComp, elemActive, isClicked})=> {
+const ProductContainer:React.FC<Props>=({id, solName, services, GridComp, elemActive, isClicked, theme})=> {
   const [isIcon, setIcon] = useState<boolean>(false)
 
   let totalPrice:number=0;
@@ -62,7 +63,7 @@ const ProductContainer:React.FC<Props>=({id, solName, services, GridComp, elemAc
         </>
     ) : (  <>
 
-            <ProductRender solName={solName} services={services} prodCart={ProductCart} id={id}  isIcon={isIcon} gridComp={GridComp} elemActive={elemActive} isClicked={isClicked}/> 
+            <ProductRender solName={solName} services={services} prodCart={ProductCart} id={id}  isIcon={isIcon} gridComp={GridComp} elemActive={elemActive} isClicked={isClicked} theme={theme}/> 
            
           </>
           

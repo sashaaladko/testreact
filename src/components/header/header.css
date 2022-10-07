@@ -6,8 +6,6 @@ header {
     padding: 14px 24px;
     gap: 12px;
     height: 64px;
-    background: #1C1C1E;
-    border-bottom: 1px solid #38383A;
   }
   
   h1{
@@ -16,7 +14,6 @@ header {
     font-weight: 500;
     font-size: 20px;
     line-height: 28px;
-    color: #FFFFFF;
   
     margin-top:18px ;
     margin-left: 24px;
@@ -39,7 +36,6 @@ header {
     font-size: 14px;
     line-height: 20px;
     text-align: right;
-    color: #FFFFFF;
   }
   
   .address label {
@@ -48,7 +44,6 @@ header {
     font-size: 12px;
     line-height: 16px;
     text-align: right;
-    color: rgba(235, 235, 245, 0.6);
   }
 
   .prod{
@@ -57,7 +52,6 @@ header {
     font-weight: 500;
     font-size: 20px;
     line-height: 28px;
-    color: #FFFFFF;
     margin-left: 40px;
     margin-top: 24px;
     margin-bottom: 24px;
@@ -67,7 +61,6 @@ header {
     margin-left: 34px;
     padding: 8px 12px 12px 12px;
     background-color: #FC6F20;
-    color: #FFFFFF;
     border-radius: 4px;
   }
   .btn:hover {
@@ -81,6 +74,17 @@ header {
   .cart{
     display: flex;
   }
+  /* .dark {
+    background-color: #1E1E1E;
+
+  }
+  .light{
+    background-color: #ababb1;
+}
+
+.light h1, .light address, .light label {
+  color:#1E1E1E
+} */
 
   .totalPrice{
     margin-top: 24px;

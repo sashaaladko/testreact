@@ -1,14 +1,12 @@
 .main {
     padding: 0 24px;
     width:100%;
-
   }
   
 .productName {
     font-weight: 500;
     font-size: 20px;
     line-height: 28px;
-    color: #FFFFFF;
     text-decoration: none;
     cursor: pointer;
   }
@@ -22,11 +20,33 @@
     padding: 12px;
 }
 
+.one{
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.one .info{
+width: 100%;
+}
+
+.two {
+  grid-template-columns: 1fr 1fr;
+}
+.two .info{
+width: 100%;
+}
+
+.three {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.three .info {
+  width: 100%;
+}
+
 .price, .totalPrice{
-  flex:1;
+
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
-  color: #FFFFFF;
 }
 

@@ -1,3 +1,8 @@
+body{
+
+  font-family: 'Roboto';
+  font-style: normal;
+}
 .main {
   padding: 0 24px;
   width: 100%;
@@ -10,15 +15,13 @@
 }
 
 .info {
-  min-height: 465px;
   padding: 24px;
   margin: 8px;
-  background: #2c2c2e;
   border-radius: 8px;
 }
 
 .container {
-  background-color: #3a3a3c;
+
   padding: 8px 16px 38px;
   margin-top: 8px;
 
@@ -28,8 +31,8 @@
 .list {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   padding: 10px;
-  border-bottom: 1px solid #6a6a6b;
 }
 
 .container .list:last-child {
@@ -37,24 +40,20 @@
 }
 
 .services {
-  flex: 6;
+
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #ffffff;
 }
 
 .name h2 {
   height: 28px;
   font-weight: 500;
   font-size: 20px;
-
-  color: #ffffff;
 }
 
 .lbl {
   height: 20px;
-  color: rgba(235, 235, 245, 0.6);
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
@@ -65,13 +64,12 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
-  color: rgba(235, 235, 245, 0.6);
 }
 
 .cartIcon {
   width: 20px;
   height: 20px;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .productHeader {
@@ -94,54 +92,15 @@
 
 }
 
-.active {
-  grid-column: span 2;
-  grid-row: span 2;
+.one .inactive .container {
+  display: none;
+  opacity: 0;
 }
 
-.active .info {
-  padding-top: 0px;
-  margin: 0;
-  padding: 30px;
+
+.one .active .container {
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.active .version {
-  font-size: 30px;
-  line-height: 30px;
-  padding-bottom: 30px;
-}
-
-.active .productName {
-  font-size: 40px;
-}
-
-.active .container {
-  padding: 10px;
-  margin-left: 10px;
-  padding-bottom: 100px;
-}
-
-.active .services {
-  padding-top: 20px;
-  font-size: 30px;
-  line-height: 40px;
-}
-
-.active .price {
-  padding-top: 20px;
-  font-size: 30px;
-  align-items: end;
-}
-
-.active .nameVersion{
-
-}
-
-.active .btnComponent{
-
-}
-
-.active .productHeader{
-  padding-top: 20px;
-  padding-bottom: 30px;
-}

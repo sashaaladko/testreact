@@ -1,6 +1,5 @@
 .cartContainer{
     display: flex;
-    background-color: #3A3A3C;
     padding: 8px 16px 38px;
     margin-top: 8px;
     border-radius: 8px; 
@@ -14,12 +13,12 @@ h2, .amount{
     font-weight: 500;
     font-size: 20px;
     line-height: 28px;
-    color: #FFFFFF;
 }
 
 .amount{
     display: flex;
     justify-content: center;
+    margin-right: 165px;
 }
 
 .quantity {
@@ -30,21 +29,21 @@ h2, .amount{
 
 .infoCart{
     margin: 46px;
-flex:5
+    flex:5
 }
 
 .btn {
     margin: 10px;
 }
 
-.cartWrapper{
-
-}
 
 .dropdown{
     margin-left: 50px;
 }
 
+main{
+
+}
 
 
 

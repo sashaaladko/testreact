@@ -2,16 +2,34 @@ import React from "react";
 import "./header.css"
 import { NavLink } from "react-router-dom";
 import { useSelector } from 'react-redux'
-import home from '../img/homeWhite.svg'
-import cart from '../img/cartWhite.svg'
-import clear from '../img/clearWhite.svg'
-import prod from '../img/prodWhite.svg'
+import { useState } from "react";
+import homeWhite from '../img/homeWhite.svg'
+import homeBlack from '../img/homeBlack.svg'
+import cartWhite from '../img/cartWhite.svg'
+import cartBlack from '../img/cartBlack.svg'
+import clearWhite from '../img/clearWhite.svg'
+import clearBlack from '../img/clearBlack.svg'
+import prodWhite from '../img/prodWhite.svg'
+import prodBlack from '../img/prodBlack.svg'
 import ButtonComponent from "../buttons/buttonComponent";
+import gridOneWhite from '../img/gridOneWhite.svg'
+import gridTwoWhite from '../img/gridTwoWhite.svg'
+import gridThreeWhite from '../img/gridThreeWhite.svg'
+import gridOneBlack from '../img/gridOneBlack.svg'
+import gridTwoBlack from '../img/gridTwoBlack.svg'
+import gridThreeBlack from '../img/gridThreeBlack.svg'
+
 
 interface Props {
   mode?: string;
   total?: number;
   btn?: ()=>void;
+  gridState?:string
+  handleGridOne?:()=>void
+  handleGridTwo?:()=>void
+  handleGridThree?:()=>void
+  changeTheme?:()=>void
+  theme?:string
 }
 
 interface Data{
@@ -19,7 +37,7 @@ interface Data{
 
 }
 
-const Header:React.FC<Props>=({mode, total, btn})=> {
+const Header:React.FC<Props>=({mode, total, btn, gridState, handleGridOne, handleGridThree, handleGridTwo, changeTheme, theme})=> {
   const amount = useSelector((store:any)=>store.cart.cartItems)
   function amountCart():number{
     const initialValue:number = 0
@@ -28,14 +46,24 @@ const Header:React.FC<Props>=({mode, total, btn})=> {
     })
     return cartAmount.reduce((a: number,b: number)=>a+b, initialValue)
   }
-  
+    let iconOne = theme=='light' ? gridOneBlack : gridOneWhite
+    let iconTwo = theme=='light' ? gridTwoBlack : gridTwoWhite
+    let iconThree = theme=='light' ? gridThreeBlack : gridThreeWhite
+
+    let home = theme=='light' ? homeBlack : homeWhite
+    let cart = theme=='light' ? cartBlack : cartWhite
+    let prod = theme=='light' ? prodBlack : prodWhite
+    let clear = theme=='light' ? clearBlack : clearWhite
     return (
-        <>
-         <header>
+        <div className={`${theme}`}>
+         <header className={`${theme}`}>
         <h1>Practice</h1>
-        
+        <ButtonComponent color="red" text='change theme' func={changeTheme}/>
         {mode!='cart' &&
         <>
+          <ButtonComponent icon={iconOne} name={`${theme}`} func={handleGridOne}/>
+          <ButtonComponent icon={iconTwo} name={`${theme}`} func={handleGridTwo} />
+          <ButtonComponent icon={iconThree} name={`${theme}`}  func={handleGridThree}/>
           <NavLink to="/"><ButtonComponent color="orange" icon={home} text="Главная" size="medium"/></NavLink>
          <NavLink to="cart"><ButtonComponent color="orange" icon={cart} size="medium" text={`Корзина|${amountCart()}`}/></NavLink>
         </>
@@ -53,7 +81,7 @@ const Header:React.FC<Props>=({mode, total, btn})=> {
           </label>
         </div>
       </header>
-      <div className="cart">
+      <div className={`cart ${theme}`}>
         <h1 className="prod">Товары</h1>
         {mode=='cart'&&
         <div className="totalPriceContainer">
@@ -62,7 +90,7 @@ const Header:React.FC<Props>=({mode, total, btn})=> {
 
         }
       </div>
-     </>
+     </div>
     )
 }
 

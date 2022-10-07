@@ -1,0 +1,51 @@
+@use './colors' as *;
+
+
+.light{
+    .info{
+        background-color: #DEE2E6;
+    }
+    .container{
+        background-color: #CED4DA;
+    }
+    .version, .productName, .services, .price, h1, .totalPrice, .address, label,a{
+        color: #000000;
+    }
+    .list{
+        border-bottom: 1px solid #aeaeb1;
+    }
+
+    header, .cart{
+        background-color: #C1C2C5;
+    }
+    header{
+        border-bottom: 1px solid #aeaeb1;
+    }
+    main{
+        background-color: #C1C2C5;
+    }
+
+  
+}
+
+.dark{
+    .info{
+        background-color: #2c2c2e;
+    }
+    .container{
+        background-color: #3a3a3c;
+    }
+    .list{
+        border-bottom: 1px solid #6a6a6b;
+    }
+    .version, .productName, .services, .price, h1, .totalPrice, .address, label, a{
+        color: #F1F3F5;
+    }
+    header{
+        border-bottom: 1px solid #6a6a6b;
+    }
+
+    body{
+        background-color: #1E1E1E;
+    }
+}

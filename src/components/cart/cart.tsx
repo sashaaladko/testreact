@@ -8,13 +8,16 @@ import { incrementAmount, decrementAmount, removeItem } from "../../features/car
 import ButtonComponent from "../buttons/buttonComponent";
 import arrowWhiteTop from '../img/arrowWhiteTop.png'
 import arrowWhiteBottom from '../img/arrowWhiteBottom.png'
-import type {RootState} from '../../redux/store'
 import type {CartData} from '../../features/cart/cartSlice'
+import { useContext } from "react";
+import ThemeContext from "../../themeContext";
 
 
 function Cart() {
     const dispatch = useAppDispatch()
     const cartItem = useAppSelector((store)=>store.cart.cartItems)
+    const{theme, changeTheme} = useContext(ThemeContext)
+
     function incrAmount(id:string) {
         return dispatch(incrementAmount(id))
     }
@@ -40,31 +43,31 @@ function Cart() {
     if(cartItem.length<1){
 
         return (
-            <>
+            <div className={`${theme}`}>
             <Header mode='cart'/>
             <h1>ваша корзина пуста</h1>
-            </>
-        
+            </div>
         )
     }
 
         return(
             <main>
+                <div>
             <Header mode='cart' btn={clearCart} total={totalPrice()} />
             <div className="cartWrapper">
                     {cartItem.map((e)=>{
               
                        return( 
                         <>
-                         <div className="cartContainer">
+                         <div className={`cartContainer ${theme}`}>
                             <div className="infoCart">
                                 <h2>{e.name}</h2>
                                 <span className="price">{e.price*e.cartAmount} BYN</span>
                             </div>
                             <div className="quantity">
-                                <ButtonComponent icon={arrowWhiteTop} name="arrow" func={()=>incrAmount(e.id)}/>
+                                <ButtonComponent icon={arrowWhiteTop} name={`${theme}`} func={()=>incrAmount(e.id)}/>
                                 <span className="amount">{e.cartAmount}</span>
-                                <ButtonComponent icon={arrowWhiteBottom} name="arrow" func={()=>decrAmount(e.id)}/>
+                                <ButtonComponent icon={arrowWhiteBottom} name={`${theme}`} func={()=>decrAmount(e.id)}/>
                             </div>
                         </div>
                         </>
@@ -72,7 +75,7 @@ function Cart() {
                     })}
                     <Outlet/>
             </div>
-               
+            </div>
        </main>
         )
 

@@ -14,6 +14,7 @@ interface Props{
   gridComp?:any;
   isClicked?: boolean;
   elemActive?:string;
+  theme?:string
 }
 
 interface Data{
@@ -21,7 +22,7 @@ interface Data{
   price: number;
 }
 
-const ProductRender:React.FC<Props> = ({isIcon, id, solName, prodId, services, prodCart, gridComp, elemActive, isClicked})=>{
+const ProductRender:React.FC<Props> = ({isIcon, id, solName, prodId, services, prodCart, gridComp, elemActive, isClicked, theme})=>{
   let isActive: string = 'inactive'
   if (elemActive==id)
   {
@@ -36,18 +37,18 @@ const ProductRender:React.FC<Props> = ({isIcon, id, solName, prodId, services, p
 
       <>
       
-          <div className={`wrapper ${isActive}`} onClick={()=>gridComp(id)}>
+          <div className={`wrapper ${isActive} ${theme}`} onClick={()=>gridComp(id)}>
           <div className="info">
             <div className="productHeader">
               <div className="nameVersion">
                 <label className="version">Version 2.4.0</label>
-                {isIcon && <img className="cartIcon" src={icon}/>}
                 <div className="name">
                   {!prodId && <NavLink to={`/products/${id}`} className="productName">{solName}</NavLink>}
                   {prodId && <h2>{solName}</h2>}
                 </div>
               </div>
               <div className="btnComponent">
+              {isIcon && <img className="cartIcon" src={icon}/>}
                 <ButtonComponent color="blue" size="small" text="Добавить" name={`${isActive}`} icon={add} func={prodCart}/>
               </div>
             </div>
