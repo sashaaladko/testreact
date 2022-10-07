@@ -1,7 +1,7 @@
 .cartContainer{
     display: flex;
     padding: 8px 16px 38px;
-    margin-top: 8px;
+    margin-top: 50px;
     border-radius: 8px; 
     margin-left: 20px;
     min-width: 1000px;
@@ -18,7 +18,7 @@ h2, .amount{
 .amount{
     display: flex;
     justify-content: center;
-    margin-right: 165px;
+    margin-right: 190px;
 }
 
 .quantity {
@@ -41,9 +41,7 @@ h2, .amount{
     margin-left: 50px;
 }
 
-main{
 
-}
 
 
 

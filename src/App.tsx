@@ -30,10 +30,8 @@ function changeTheme() {
       theme, 
       changeTheme,
     }}>
-      <div className={`${theme}`}>
-        <main>
+      <div className={` app ${theme}`}>
           <RouteHook />
-        </main>
       </div>
     </ThemeContext.Provider>
       

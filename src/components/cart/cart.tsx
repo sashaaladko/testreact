@@ -8,6 +8,8 @@ import { incrementAmount, decrementAmount, removeItem } from "../../features/car
 import ButtonComponent from "../buttons/buttonComponent";
 import arrowWhiteTop from '../img/arrowWhiteTop.png'
 import arrowWhiteBottom from '../img/arrowWhiteBottom.png'
+import arrowBlackTop from '../img/arrowBlackTop.png'
+import arrowBlackBottom from '../img/arrowBlackBottom.png'
 import type {CartData} from '../../features/cart/cartSlice'
 import { useContext } from "react";
 import ThemeContext from "../../themeContext";
@@ -17,6 +19,8 @@ function Cart() {
     const dispatch = useAppDispatch()
     const cartItem = useAppSelector((store)=>store.cart.cartItems)
     const{theme, changeTheme} = useContext(ThemeContext)
+    let arrowTop = theme=="light"? arrowBlackTop : arrowWhiteTop
+    let arrowBottom = theme=="light"? arrowBlackBottom : arrowWhiteBottom
 
     function incrAmount(id:string) {
         return dispatch(incrementAmount(id))
@@ -51,10 +55,10 @@ function Cart() {
     }
 
         return(
-            <main>
-                <div>
+            <>
+
             <Header mode='cart' btn={clearCart} total={totalPrice()} />
-            <div className="cartWrapper">
+
                     {cartItem.map((e)=>{
               
                        return( 
@@ -65,18 +69,16 @@ function Cart() {
                                 <span className="price">{e.price*e.cartAmount} BYN</span>
                             </div>
                             <div className="quantity">
-                                <ButtonComponent icon={arrowWhiteTop} name={`${theme}`} func={()=>incrAmount(e.id)}/>
+                                <ButtonComponent icon={arrowTop} name={`btn ${theme}`} func={()=>incrAmount(e.id)}/>
                                 <span className="amount">{e.cartAmount}</span>
-                                <ButtonComponent icon={arrowWhiteBottom} name={`${theme}`} func={()=>decrAmount(e.id)}/>
+                                <ButtonComponent icon={arrowBottom} name={`btn ${theme}`} func={()=>decrAmount(e.id)}/>
                             </div>
                         </div>
                         </>
                        )
                     })}
                     <Outlet/>
-            </div>
-            </div>
-       </main>
+       </>
         )
 
    

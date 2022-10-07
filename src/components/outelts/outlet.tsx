@@ -1,13 +1,15 @@
 import "./outlets.css"
-import React from "react"
+import React, { useContext } from "react"
 import { useSelector } from "react-redux"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import ButtonComponent from "../buttons/buttonComponent"
 import payWhite from '../img/payWhite.svg'
+import ThemeContext from "../../themeContext";
 
 interface Data{
     name: string;
+
 
 }
 
@@ -15,6 +17,7 @@ function Outlet() {
     const dispatch = useDispatch()
     const outletItems = useSelector((store:any)=>store.outlet.outletItems)
     const cartItems = useSelector((store:any)=>store.cart.cartItems)
+    const{theme, changeTheme} = useContext(ThemeContext)
     const[outlet, setOutlet] = useState()
 
     function pay(){
@@ -30,7 +33,7 @@ function Outlet() {
         }
     }
     return(
-        <>
+        <div className={`${theme}`}>
         <span className="selectedItem">товар будет доставлен в {outlet}</span><br/>
         <ButtonComponent color="orange" text="Оплатить" size="small" func={pay} icon={payWhite}/>
         <div className="dropdown">
@@ -45,7 +48,7 @@ function Outlet() {
             </ul>
         
         </div>
-        </>
+        </div>
         
     )
 }
