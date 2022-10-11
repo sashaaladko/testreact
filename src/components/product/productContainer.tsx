@@ -4,17 +4,18 @@ import ProductRender from "./productRender";
 import { useAppDispatch } from "../../hooks";
 import { useAppSelector } from "../../hooks";
 import { addToCart } from "../../features/cart/cartSlice";
-import Header from "../header/header";
 import { useState } from "react";
 import { useEffect } from "react";
 import './product.css'
+import HeaderContainer from "../header/headerContainer";
 
 
-interface Props {
+
+interface IProps {
   id?: string;
   solName?: string[];
   services?: string[];
-  GridComp?: (id:string)=>void;
+  handleChangeGrid?: (id:string)=>void;
   elemActive?: string;
   isClicked?:boolean
   theme?:string
@@ -22,7 +23,7 @@ interface Props {
 }
 
 
-const ProductContainer:React.FC<Props>=({id, solName, services, GridComp, elemActive, isClicked, theme})=> {
+const ProductContainer:React.FC<IProps>=({id, solName, services, handleChangeGrid, elemActive, isClicked, theme})=> {
   const [isIcon, setIcon] = useState<boolean>(false)
 
   let totalPrice:number=0;
@@ -33,7 +34,6 @@ const ProductContainer:React.FC<Props>=({id, solName, services, GridComp, elemAc
     const prodId:any= params.id;
 
     const prodCard:any = productItem  && productItem.find((e:any) => e.id==prodId)
-
 
 
     function ProductCart() {
@@ -58,12 +58,12 @@ const ProductContainer:React.FC<Props>=({id, solName, services, GridComp, elemAc
 
     return prodId ? (
         <>
-        <Header/>
-        <ProductRender solName={prodCard.solName} services={prodCard.services} prodCart={ProductCart} prodId={prodId}  isIcon={isIcon} />
+        <HeaderContainer/>
+        <ProductRender solName={prodCard.solName} services={prodCard.services} prodCart={ProductCart} prodId={prodId}  isIcon={isIcon} handleChangeGrid={handleChangeGrid} elemActive={elemActive} isClicked={isClicked} theme={theme}/>
         </>
     ) : (  <>
 
-            <ProductRender solName={solName} services={services} prodCart={ProductCart} id={id}  isIcon={isIcon} gridComp={GridComp} elemActive={elemActive} isClicked={isClicked} theme={theme}/> 
+            <ProductRender solName={solName} services={services} prodCart={ProductCart} id={id}  isIcon={isIcon} handleChangeGrid={handleChangeGrid} elemActive={elemActive} isClicked={isClicked} theme={theme}/> 
            
           </>
           

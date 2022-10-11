@@ -1,11 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+
+
 export type CartData = {
     id: string;
     name:string[]|undefined;
     price: number;
     cartAmount?: any;
 }
+
+
 
 type CartState = {
     cartItems : CartData[],

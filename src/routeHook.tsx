@@ -1,9 +1,10 @@
 import React from "react"
 import { useRoutes } from "react-router-dom";
 import MainPage from "./components/main/main";
-import Cart from "./components/cart/cart";
 import ProductsContainer from "./components/products/productsContainer";
 import ProductContainer from "./components/product/productContainer";
+import CartContainer from "./components/cart/cartContainer";
+import FormContainer from "./components/form/fromContainer";
 
 const RouteHook:React.FC = () => {
     let routeResult = useRoutes([
@@ -18,11 +19,15 @@ const RouteHook:React.FC = () => {
         },
         {
           path:"products/cart",
-          element: <Cart/>,
+          element: <CartContainer/>,
         },
         {
           path: "/",
           element: <MainPage/>
+        },
+        {
+          path: "products/cart/form",
+          element: <FormContainer/>
         }
       ])
 

@@ -1,4 +1,22 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
+
+type outletData={
+    name: string;
+    
+}
+
+
+type OutletState={
+    outletItems: outletData[];
+    chosenOutlet: string;
+   
+}
+
+const initialState: OutletState={
+    outletItems: [],
+    chosenOutlet: ''
+
+}
 
 export const getDataOutlet:any = createAsyncThunk(
     'outlet/getDataOutlet',
@@ -6,20 +24,17 @@ export const getDataOutlet:any = createAsyncThunk(
         const url = "https://marketing.test.imlab.by/docs/torg_types"
         const response = await fetch(url)
         const dataOutlets = await response.json()
-        return dataOutlets
+        return ({name:dataOutlets})
     }
     
 )
 
 const outletSlice = createSlice ({
     name: 'outlet',
-    initialState : {
-        outletItems: [],
-        chosenOutlet: '',
-    },
+    initialState,
     reducers: {
-        cartChosenOutlet: (state, action)=>{
-            state.chosenOutlet.concat({...action.payload})
+        cartChosenOutlet: (state:OutletState, action: PayloadAction<string>)=>{
+            state.chosenOutlet.concat(action.payload)
         },
     },
     extraReducers : {
@@ -31,4 +46,4 @@ const outletSlice = createSlice ({
 
 export default outletSlice.reducer
 
-export const {cartChosenOutlet,} = outletSlice.actions
+export const {cartChosenOutlet} = outletSlice.actions

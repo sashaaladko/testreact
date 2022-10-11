@@ -60,15 +60,10 @@
     
 }
 
-
-
 .arrow img {
     height: 30px;
 }
 
-.grid {
-
-}
 a{
     text-decoration: none;
 }
@@ -81,8 +76,18 @@ a{
 }
 .btn.light {
     background-color: #DEE2E6;
+    cursor: pointer;
+}
+
+
+.btn.light:hover{
+    background-color: #DEE2E6;
 }
 
 .btn.dark {
+    background-color: #2c2c2e;
+    cursor: pointer;
+}
+.btn.dark:hover {
     background-color: #2c2c2e;
 }

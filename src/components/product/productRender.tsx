@@ -4,25 +4,21 @@ import icon from  '../img/icon.png'
 import ButtonComponent from "../buttons/buttonComponent";
 import add from '../img/addWhite.svg'
 
-interface Props{
+interface IProps{
   isIcon?: boolean;
   id?: string;
   solName?: string[];
   prodId?: number[];
   services?: string[];
   prodCart?: any;
-  gridComp?:any;
+  handleChangeGrid?:any;
   isClicked?: boolean;
   elemActive?:string;
   theme?:string
 }
 
-interface Data{
-  name: string;
-  price: number;
-}
 
-const ProductRender:React.FC<Props> = ({isIcon, id, solName, prodId, services, prodCart, gridComp, elemActive, isClicked, theme})=>{
+const ProductRender:React.FC<IProps> = ({isIcon, id, solName, prodId, services, prodCart, handleChangeGrid, elemActive, isClicked, theme})=>{
   let isActive: string = 'inactive'
   if (elemActive==id)
   {
@@ -31,13 +27,12 @@ const ProductRender:React.FC<Props> = ({isIcon, id, solName, prodId, services, p
   if(prodId) {
     isActive ='inactive';
   }
- 
   
   return (
 
       <>
       
-          <div className={`wrapper ${isActive} ${theme}`} onClick={()=>gridComp(id)}>
+          <div className={`wrapper ${isActive} ${theme}`} onClick={()=>handleChangeGrid(id)}>
           <div className="info">
             <div className="productHeader">
               <div className="nameVersion">

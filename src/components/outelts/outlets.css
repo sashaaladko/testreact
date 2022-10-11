@@ -1,5 +1,4 @@
 .dropdown{
-    position: fixed;
     display:inline-block;
     padding-top:10px;
   }
@@ -35,4 +34,19 @@ span{
 
 .selectedItem {
     color: white;
+}
+
+form{
+    margin-top: 10px;
+}
+
+.form{
+    padding-top:30px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+}
+
+input{
+    max-width: 250px;
 }

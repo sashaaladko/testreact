@@ -1,53 +1,36 @@
 import "./outlets.css"
-import React, { useContext } from "react"
-import { useSelector } from "react-redux"
-import { useState } from "react"
-import { useDispatch } from "react-redux"
+import React from "react"
 import ButtonComponent from "../buttons/buttonComponent"
 import payWhite from '../img/payWhite.svg'
-import ThemeContext from "../../themeContext";
+import {useForm} from 'react-hook-form'
+import { useAppSelector } from "../../hooks";
+import { NavLink } from "react-router-dom"
 
-interface Data{
-    name: string;
 
+interface IProps{
+    theme:string;
+    outlet: string;
+    setOutlet: (value:string)=>void;
+    pay:()=>void;
 
 }
 
-function Outlet() {
-    const dispatch = useDispatch()
-    const outletItems = useSelector((store:any)=>store.outlet.outletItems)
-    const cartItems = useSelector((store:any)=>store.cart.cartItems)
-    const{theme, changeTheme} = useContext(ThemeContext)
-    const[outlet, setOutlet] = useState()
-
-    function pay(){
-        if(outlet){
-            const arrayCart = cartItems.map((e:Data)=>{
-                const array = e.name
-                return array
-            })
-            console.log(`торговая точка: ${outlet}, товары : ${arrayCart}`)
-        }
-        else {
-            console.log("choose outlet")
-        }
-    }
+const Outlet:React.FC<IProps>=({theme, setOutlet, outlet, pay})=> {
+    const outletItems = useAppSelector((store)=>store.outlet.outletItems)
+   
     return(
         <div className={`${theme}`}>
         <span className="selectedItem">товар будет доставлен в {outlet}</span><br/>
-        <ButtonComponent color="orange" text="Оплатить" size="small" func={pay} icon={payWhite}/>
+        <NavLink to="products/cart/form"><ButtonComponent color="orange" text="Оплатить" size="small" func={pay} icon={payWhite}/></NavLink>
         <div className="dropdown">
             <label>выберите точку</label>
             <ul>
-                {outletItems.map((item:string)=>{
-                    return(
+                {outletItems.map((item:any)=>(
                         <li><span><input type="radio" name="outlets" value={item} onChange={(e: any)=>setOutlet(e.target.value)}/>{item}</span></li>
-                    )
-
-                })}
+                ))}
             </ul>
+        </div><br/>
         
-        </div>
         </div>
         
     )

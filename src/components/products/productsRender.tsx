@@ -1,11 +1,11 @@
 import React from "react";
-import Header from "../header/header";
+import HeaderContainer from "../header/headerContainer";
 import ProductContainer from "../product/productContainer";
 
 
-interface Props{
+interface IProps{
   productItems?: object[];
-  GridComp?: (id:string)=>void; 
+  handleChangeGrid?: (id:string)=>void; 
   elemActive?: string;
   isClicked?: boolean;
   gridState?:string
@@ -15,22 +15,22 @@ interface Props{
   theme?:string;
   changeTheme?:()=>void
 }
-interface Data{
+interface IData{
   id?: string;
   solName?: string[];
   services?: string[];
 }
 
-const ProductsRender:React.FC<Props> = ({productItems, GridComp, elemActive, isClicked, gridState, handleGridOne, handleGridTwo, handleGridThree, theme, changeTheme })=> {
+const ProductsRender:React.FC<IProps> = ({productItems, handleChangeGrid, elemActive, isClicked, gridState, handleGridOne, handleGridTwo, handleGridThree, theme, changeTheme })=> {
 
   return (
     <main>
-      <Header handleGridOne={handleGridOne} handleGridTwo={handleGridTwo} handleGridThree={handleGridThree} gridState={gridState} changeTheme={changeTheme} theme={theme}/>
+      <HeaderContainer handleGridOne={handleGridOne} handleGridTwo={handleGridTwo} handleGridThree={handleGridThree} gridState={gridState} changeTheme={changeTheme} theme={theme}/>
       <div className={`infoContainer ${gridState} ${theme}`}>
         {productItems &&
-          productItems.map((e: Data) => (
+          productItems.map((e: IData) => (
             <>
-              <ProductContainer id={e.id} solName={e.solName} services={e.services} GridComp={GridComp} elemActive={elemActive} isClicked={isClicked} theme={theme}/>
+              <ProductContainer id={e.id} solName={e.solName} services={e.services} handleChangeGrid={handleChangeGrid} elemActive={elemActive} isClicked={isClicked} theme={theme}/>
             </>
           ))}
       </div>

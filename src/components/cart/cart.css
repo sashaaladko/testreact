@@ -18,13 +18,14 @@ h2, .amount{
 .amount{
     display: flex;
     justify-content: center;
-    margin-right: 190px;
+    align-items: center;
+
 }
 
 .quantity {
     display: flex;
     flex-direction: column;
-    flex: 2
+    justify-content: center;
 }
 
 .infoCart{
@@ -36,11 +37,24 @@ h2, .amount{
     margin: 10px;
 }
 
-
 .dropdown{
     margin-left: 50px;
 }
 
+.productImage{
+    height: 150px;
+    width: 150px;
+}
+
+.cartPage{
+    display: flex;
+    flex-direction: row;
+   height: 100%;
+}
+.cartWrapper{
+    display: flex;
+    flex-direction: column;
+}
 
 
 
