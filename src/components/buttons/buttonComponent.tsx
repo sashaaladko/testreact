@@ -13,7 +13,7 @@ interface IProps {
 const ButtonComponent: React.FC<IProps> = ({color, size, name, text, func, icon}) => {
  
     return (
-        <button className={`buttonIcon ${color} ${size} ${name}` } onClick={func}  ><img src={icon}/><a>{text}</a> </button>
+        <button className={`buttonIcon ${color} ${size} ${name}` } onClick={func}>{icon}<a>{text}</a> </button>
     )
 }
 

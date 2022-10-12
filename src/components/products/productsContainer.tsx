@@ -10,7 +10,7 @@ function ProductsContainer() {
     const[elemActive, setElemActive] = useState<string>('')
     const[isClicked, setClick]=useState<boolean>(false)
     const[gridState, setGridState] = useState<string>('')
-    const{theme, changeTheme} = useContext(ThemeContext)
+    const{theme, color, changeTheme} = useContext(ThemeContext)
 
     function handleChangeGrid(id:string):void {
         setClick(!isClicked)
@@ -29,7 +29,7 @@ function ProductsContainer() {
     const productItems = useAppSelector((store)=>store.mainPage.productItems)
     return(
        <ProductsRender productItems = {productItems} handleChangeGrid={handleChangeGrid} elemActive={elemActive} isClicked={isClicked} gridState={gridState} handleGridOne={handleGridOne} handleGridTwo={handleGridTwo} handleGridThree={handleGridThree}
-       theme={theme} changeTheme={changeTheme}/>
+       theme={theme} color={color} changeTheme={changeTheme}/>
     )
 }
 

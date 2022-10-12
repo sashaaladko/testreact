@@ -10,10 +10,12 @@ import ThemeContext from "./themeContext";
 const App: React.FC =()=> {
   const dispatch = useAppDispatch();
   var[theme, setTheme] = useState<string>('light')
+  var[color, setColor] = useState<string>('black')
 
   
 function changeTheme() {
   theme=='light' ? setTheme('dark') : setTheme('light')
+  theme=='light' ? setColor('white') : setColor('black')
 }
 
   useEffect(() => {
@@ -27,7 +29,7 @@ function changeTheme() {
   
   return (
     <ThemeContext.Provider value={{
-      theme, 
+      color, theme, 
       changeTheme,
     }}>
       <div className={` app ${theme}`}>

@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import icon from  '../img/icon.png'
 import ButtonComponent from "../buttons/buttonComponent";
-import add from '../img/addWhite.svg'
+import {ReactComponent as Add} from '../img/add.svg'
 
 interface IProps{
   isIcon?: boolean;
@@ -15,10 +15,11 @@ interface IProps{
   isClicked?: boolean;
   elemActive?:string;
   theme?:string
+  color?: string
 }
 
 
-const ProductRender:React.FC<IProps> = ({isIcon, id, solName, prodId, services, prodCart, handleChangeGrid, elemActive, isClicked, theme})=>{
+const ProductRender:React.FC<IProps> = ({isIcon, id, solName, prodId, services, prodCart, handleChangeGrid, elemActive, isClicked, theme, color})=>{
   let isActive: string = 'inactive'
   if (elemActive==id)
   {
@@ -44,7 +45,7 @@ const ProductRender:React.FC<IProps> = ({isIcon, id, solName, prodId, services, 
               </div>
               <div className="btnComponent">
               {isIcon && <img className="cartIcon" src={icon}/>}
-                <ButtonComponent color="blue" size="small" text="Добавить" name={`${isActive}`} icon={add} func={prodCart}/>
+                <ButtonComponent color="blue" size="small" text="Добавить" name={`${isActive}`} icon={<Add fill={color}/>} func={prodCart}/>
               </div>
             </div>
             <div className="container">

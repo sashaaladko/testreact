@@ -3,10 +3,6 @@ import './cart.css'
 import { useAppDispatch } from "../../hooks";
 import { useAppSelector } from "../../hooks";
 import { incrementAmount, decrementAmount, removeItem } from "../../features/cart/cartSlice";
-import arrowWhiteTop from '../img/arrowWhiteTop.png'
-import arrowWhiteBottom from '../img/arrowWhiteBottom.png'
-import arrowBlackTop from '../img/arrowBlackTop.png'
-import arrowBlackBottom from '../img/arrowBlackBottom.png'
 import type {CartData} from '../../features/cart/cartSlice'
 import { useContext } from "react";
 import ThemeContext from "../../themeContext";
@@ -19,19 +15,17 @@ import imgArray from "./images";
 function CartContainer() {
     const dispatch = useAppDispatch()
     const cartItem = useAppSelector((store)=>store.cart.cartItems)
-    const{theme, changeTheme} = useContext(ThemeContext)
-    let arrowTop = theme=="light"? arrowBlackTop : arrowWhiteTop
-    let arrowBottom = theme=="light"? arrowBlackBottom : arrowWhiteBottom
+    const{color, theme, changeTheme} = useContext(ThemeContext)
 
     function imgRender(id:string){
         var imageCart = imgArray.filter(item=>item.name==id)
       return imageCart
     }
 
-    function incrAmount(id:string) {
+    function incrAmountProductInCart(id:string) {
         return dispatch(incrementAmount(id))
     }
-    function decrAmount(id:string) {
+    function decrAmountProductInCart(id:string) {
         return dispatch(decrementAmount(id))
     }
     function clearCart():void{
@@ -64,8 +58,8 @@ function CartContainer() {
         return(
             <>
 
-            <HeaderContainer mode='cart' btn={clearCart} total={totalPrice()} changeTheme={changeTheme}/>
-            <Cart cartItem={cartItem} theme={theme} incrAmount={incrAmount} decrAmount={decrAmount} arrowTop={arrowTop} arrowBottom={arrowBottom} imgRender={imgRender}/>
+            <HeaderContainer mode='cart' btn={clearCart} total={totalPrice()} changeTheme={changeTheme} color={color}/>
+            <Cart cartItem={cartItem} theme={theme} color={color} incrAmountProductInCart={incrAmountProductInCart} decrAmountProductInCart={decrAmountProductInCart} imgRender={imgRender}/>
                     
        </>
         )

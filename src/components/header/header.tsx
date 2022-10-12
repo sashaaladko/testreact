@@ -2,16 +2,16 @@ import React from "react";
 import "./header.css"
 import { NavLink } from "react-router-dom";
 import ButtonComponent from "../buttons/buttonComponent";
+import {ReactComponent as Home} from '../img/home.svg'
+import {ReactComponent as Cart} from '../img/cart.svg'
+import {ReactComponent as Clear} from '../img/clear.svg'
+import {ReactComponent as Prod} from '../img/prod.svg'
+import {ReactComponent as GridOne} from '../img/gridOne.svg'
+import {ReactComponent as GridTwo} from '../img/gridTwo.svg'
+import {ReactComponent as GridThree} from '../img/gridThree.svg'
 
 
 interface IProps{
-  iconOne: HTMLImageElement;
-  iconTwo:HTMLImageElement;
-  iconThree: HTMLImageElement;
-  home: HTMLImageElement;
-  cart: HTMLImageElement;
-  prod:HTMLImageElement;
-  clear:HTMLImageElement;
   amountCart: ()=>number;
   mode?: string;
   total?: number;
@@ -21,9 +21,10 @@ interface IProps{
   handleGridThree?:()=>void
   changeTheme?:()=>void
   theme?:string
+  color?: string
 }
 
-const Header:React.FC<IProps>=({mode, total, btn, handleGridOne, handleGridThree, handleGridTwo, changeTheme, theme, iconOne, iconTwo, iconThree, home, cart, prod,clear, amountCart})=> {
+const Header:React.FC<IProps>=({mode, total, btn, handleGridOne, handleGridThree, handleGridTwo, changeTheme, theme, amountCart, color})=> {
     return (
         <div className={`${theme}`}>
          <header className={`${theme}`}>
@@ -31,17 +32,17 @@ const Header:React.FC<IProps>=({mode, total, btn, handleGridOne, handleGridThree
         <ButtonComponent color="red" text='change theme' func={changeTheme}/>
         {mode!='cart' &&
         <>
-          <ButtonComponent icon={iconOne} name={`${theme}`} func={handleGridOne}/>
-          <ButtonComponent icon={iconTwo} name={`${theme}`} func={handleGridTwo} />
-          <ButtonComponent icon={iconThree} name={`${theme}`}  func={handleGridThree}/>
-          <NavLink to="/"><ButtonComponent color="orange" icon={home} text="Главная" size="medium"/></NavLink>
-         <NavLink to="cart"><ButtonComponent color="orange" icon={cart} size="medium" text={`Корзина|${amountCart()}`}/></NavLink>
+          <ButtonComponent icon={<GridOne fill={color}/>} name={`${theme}`} func={handleGridOne}/>
+          <ButtonComponent icon={<GridTwo fill={color}/>} name={`${theme}`} func={handleGridTwo} />
+          <ButtonComponent icon={<GridThree fill={color}/>} name={`${theme}`}  func={handleGridThree}/>
+          <NavLink to="/"><ButtonComponent color="orange" icon={<Home fill={color}/>} text="Главная" size="medium"/></NavLink>
+         <NavLink to="cart"><ButtonComponent color="orange" icon={<Cart fill={color}/>} size="medium" text={`Корзина|${amountCart()}`}/></NavLink>
         </>
         }
         {mode=='cart'&&
         <>
-          <NavLink to="/products"><ButtonComponent color="orange" icon={prod} text="Продукты" size="medium"/></NavLink>
-          <ButtonComponent color="red" icon={clear} text="Очистить корзину" func={btn} size="medium"/>
+          <NavLink to="/products"><ButtonComponent color="orange" icon={<Prod fill={color}/>} text="Продукты" size="medium"/></NavLink>
+          <ButtonComponent color="red" icon={<Clear fill={color}/>} text="Очистить корзину" func={btn} size="medium"/>
         </>
         }
         <div className="address">

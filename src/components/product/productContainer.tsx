@@ -19,12 +19,14 @@ interface IProps {
   elemActive?: string;
   isClicked?:boolean
   theme?:string
+  color?: string
 
 }
 
 
-const ProductContainer:React.FC<IProps>=({id, solName, services, handleChangeGrid, elemActive, isClicked, theme})=> {
+const ProductContainer:React.FC<IProps>=({id, solName, services, handleChangeGrid, elemActive, isClicked, theme, color})=> {
   const [isIcon, setIcon] = useState<boolean>(false)
+  
 
   let totalPrice:number=0;
     const dispatch = useAppDispatch()
@@ -59,11 +61,11 @@ const ProductContainer:React.FC<IProps>=({id, solName, services, handleChangeGri
     return prodId ? (
         <>
         <HeaderContainer/>
-        <ProductRender solName={prodCard.solName} services={prodCard.services} prodCart={ProductCart} prodId={prodId}  isIcon={isIcon} handleChangeGrid={handleChangeGrid} elemActive={elemActive} isClicked={isClicked} theme={theme}/>
+        <ProductRender solName={prodCard.solName} services={prodCard.services} prodCart={ProductCart} prodId={prodId}  isIcon={isIcon} handleChangeGrid={handleChangeGrid} elemActive={elemActive} isClicked={isClicked} theme={theme} color={color}/>
         </>
     ) : (  <>
 
-            <ProductRender solName={solName} services={services} prodCart={ProductCart} id={id}  isIcon={isIcon} handleChangeGrid={handleChangeGrid} elemActive={elemActive} isClicked={isClicked} theme={theme}/> 
+            <ProductRender solName={solName} services={services} prodCart={ProductCart} id={id}  isIcon={isIcon} handleChangeGrid={handleChangeGrid} elemActive={elemActive} isClicked={isClicked} theme={theme} color={color}/> 
            
           </>
           

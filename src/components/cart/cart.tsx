@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import ButtonComponent from "../buttons/buttonComponent";
 import type {CartData} from '../../features/cart/cartSlice'
-import OutletContainer from "../outelts/outletContainer";
-import payWhite from '../img/payWhite.svg'
+import {ReactComponent as Pay} from '../img/pay.svg'
 import FormContainer from '../form/fromContainer'
+import {ReactComponent as ArrowTop} from '../img/arrowTop.svg'
+import {ReactComponent as ArrowDown} from '../img/arrow-down-1-svgrepo-com.svg'
 
 interface IProps{
     cartItem:CartData[];
     theme: string;
-    incrAmount: (id:string)=>any;
-    decrAmount: (id:string)=>any;
-    arrowTop:any;
-    arrowBottom:any;
+    incrAmountProductInCart: (id:string)=>void;
+    decrAmountProductInCart: (id:string)=>void;
     imgRender: (id:string)=>any;
+    color: string;
 }
 
-const Cart:React.FC<IProps>=({cartItem, theme, incrAmount, decrAmount, arrowBottom, arrowTop, imgRender})=> {
+const Cart:React.FC<IProps>=({cartItem, theme, incrAmountProductInCart, decrAmountProductInCart,  imgRender, color})=> {
 const [isFormClicked, setisFormClicked]=useState<boolean>(false)
     function pay(){
         // if(outlet){
@@ -36,7 +36,7 @@ const [isFormClicked, setisFormClicked]=useState<boolean>(false)
                 
                 <div className="cartWrapper">
                     <div className="btnPay">
-                    <ButtonComponent color="orange" text="Оплатить" size="small" func={pay} icon={payWhite}/>
+                    <ButtonComponent color="orange" text="Оплатить" size="small" func={pay} icon={<Pay fill={color}/>}/>
                     </div>
                
                     {cartItem.map((e)=>{
@@ -54,16 +54,15 @@ const [isFormClicked, setisFormClicked]=useState<boolean>(false)
                                 <span className="price">{e.price*e.cartAmount} BYN</span>
                             </div>
                             <div className="quantity">
-                                <ButtonComponent icon={arrowTop} name={`btn ${theme}`} func={()=>incrAmount(e.id)}/>
+                                <ButtonComponent icon={<ArrowTop fill={color}/>} name={`btn ${theme}`} func={()=>incrAmountProductInCart(e.id)}/>
                                 <span className="amount">{e.cartAmount}</span>
-                                <ButtonComponent icon={arrowBottom} name={`btn ${theme}`} func={()=>decrAmount(e.id)}/>
+                                <ButtonComponent icon={<ArrowDown fill={color}/>} name={`btn ${theme}`} func={()=>decrAmountProductInCart(e.id)}/>
                             </div>
                         </div>
                         </>
                        )
                     })}
                     </div>
-                   
             </div>
            
             </>

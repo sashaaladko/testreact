@@ -12,11 +12,8 @@ interface IFormInputs{
     email: string;
 }
 
-interface IProps{
 
-}
-
-const FormContainer:React.FC<IProps>=()=>{
+const FormContainer:React.FC=()=>{
     const outlet = useAppSelector(store=>store.outlet.chosenOutlet)
     const {handleSubmit, register, formState:{errors}} = useForm<IFormInputs>({
         defaultValues:{
