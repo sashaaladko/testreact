@@ -7,6 +7,8 @@ export type CartData = {
     name:string[]|undefined;
     price: number;
     cartAmount?: any;
+
+
 }
 
 
@@ -16,7 +18,8 @@ type CartState = {
 }
 
 const initialState: CartState = {
-    cartItems: []
+    cartItems: [],
+
 }
 
 
@@ -51,6 +54,7 @@ const cartSlice = createSlice({
         removeItem: (state) => {
             state.cartItems=[]
         },
+
     }
 
 })

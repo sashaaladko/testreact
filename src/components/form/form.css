@@ -1,0 +1,77 @@
+.dropdown{
+    display:inline-block;
+    margin:0;
+  
+}
+  
+.dropdown ul{
+    position:fixed;
+    background: #ffffff;;
+    list-style: none;
+    display:none;
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.dropdown ul li{
+    font-size: 15px;
+    padding: 10px;
+}
+
+.dropdown ul li input{
+
+}
+  
+.dropdown:hover ul{
+    display:block;
+    max-width: 500px;
+
+}
+
+label{
+    color: white
+}
+
+span{
+    color:black;
+}
+
+.selectedItem {
+    color: white;
+    font-size: 30px;
+}
+
+form{
+    margin-top: 10px;
+}
+
+.form{
+    padding-top:30px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+input{
+    max-width: 500px;
+    min-height: 30px;
+    border-radius: 10px;
+    border-color: none;
+}
+
+.inputOutlet{
+min-width: 500px;
+}
+
+.formContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputName{
+    font-size: 40px;
+
+    padding: 10px;
+}

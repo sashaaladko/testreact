@@ -25,10 +25,7 @@ const RouteHook:React.FC = () => {
           path: "/",
           element: <MainPage/>
         },
-        {
-          path: "products/cart/form",
-          element: <FormContainer/>
-        }
+        
       ])
 
       return routeResult

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import ButtonComponent from "../buttons/buttonComponent";
 import type {CartData} from '../../features/cart/cartSlice'
 import OutletContainer from "../outelts/outletContainer";
+import payWhite from '../img/payWhite.svg'
+import FormContainer from '../form/fromContainer'
 
 interface IProps{
     cartItem:CartData[];
@@ -14,12 +16,29 @@ interface IProps{
 }
 
 const Cart:React.FC<IProps>=({cartItem, theme, incrAmount, decrAmount, arrowBottom, arrowTop, imgRender})=> {
+const [isFormClicked, setisFormClicked]=useState<boolean>(false)
+    function pay(){
+        // if(outlet){
+        //     const arrayCart = cartItems.map((e:IData)=>{
+        //         const array = e.name
+        //         return array
+        //     })
+        //}
+            // console.log(`торговая точка: ${outlet}, товары : ${arrayCart}`)
+        
+        setisFormClicked(true)
+        
+    }
 
-
-   
-        return(
+        return isFormClicked==false ? (
+            <>
             <div className={`cartPage ${theme}`} >
+                
                 <div className="cartWrapper">
+                    <div className="btnPay">
+                    <ButtonComponent color="orange" text="Оплатить" size="small" func={pay} icon={payWhite}/>
+                    </div>
+               
                     {cartItem.map((e)=>{
               
                        return( 
@@ -44,8 +63,13 @@ const Cart:React.FC<IProps>=({cartItem, theme, incrAmount, decrAmount, arrowBott
                        )
                     })}
                     </div>
-                    <OutletContainer/>
-       </div>
+                   
+            </div>
+           
+            </>
+              
+        ) : (
+            <FormContainer/>
         )
 
    

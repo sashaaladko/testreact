@@ -49,11 +49,15 @@ h2, .amount{
 .cartPage{
     display: flex;
     flex-direction: row;
-   height: 100%;
+
 }
 .cartWrapper{
     display: flex;
     flex-direction: column;
+}
+.btnPay{
+    display: flex;
+    justify-content: end;
 }
 
 

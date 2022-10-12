@@ -2,13 +2,13 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 
 type outletData={
     name: string;
-    
 }
 
 
 type OutletState={
     outletItems: outletData[];
     chosenOutlet: string;
+
    
 }
 
@@ -24,7 +24,7 @@ export const getDataOutlet:any = createAsyncThunk(
         const url = "https://marketing.test.imlab.by/docs/torg_types"
         const response = await fetch(url)
         const dataOutlets = await response.json()
-        return ({name:dataOutlets})
+        return (dataOutlets)
     }
     
 )
@@ -33,15 +33,17 @@ const outletSlice = createSlice ({
     name: 'outlet',
     initialState,
     reducers: {
-        cartChosenOutlet: (state:OutletState, action: PayloadAction<string>)=>{
-            state.chosenOutlet.concat(action.payload)
+        cartChosenOutlet: (state:OutletState, action:PayloadAction<any>)=>{
+            state.chosenOutlet = action.payload
         },
     },
-    extraReducers : {
-        [getDataOutlet.fulfilled] : (state, action)=>{
-            state.outletItems = action.payload
-        }
-    },
+    
+    extraReducers: (builder)=>{
+        builder.addCase(getDataOutlet.fulfilled, (state, action)=>{
+          state.outletItems = action.payload
+        })
+        
+      },
 })
 
 export default outletSlice.reducer
